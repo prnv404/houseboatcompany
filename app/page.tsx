@@ -1,262 +1,333 @@
 import Image from "next/image";
-import Header from "./components/header";
+import Link from "next/link";
 import FloatingButtons from "./components/floating-buttons";
-
-const sharedHouseboats = [
-  {
-    name: "Day Cruise",
-    duration: "8 hours",
-    groupSize: "Up to 15 guests",
-    highlight: "Best value",
-    image: "/houseboat/queen/queen-lounge-day-1.jpg",
-    includes: ["Lunch on board", "Welcome drinks", "Guided backwater tour"],
-    description:
-      "Share the magic of the backwaters with fellow travelers. Board a traditional kettuvallam, enjoy a freshly cooked lunch, and cruise through palm-lined canals from morning to evening.",
-  },
-  {
-    name: "Overnight Stay",
-    duration: "22 hours",
-    groupSize: "Up to 10 guests",
-    highlight: "Most popular",
-    image: "/houseboat/queen/queen-bedroom-7.jpg",
-    includes: ["Dinner & breakfast", "Sunset deck session", "Private sleeping berth"],
-    description:
-      "Fall asleep to the sound of gentle ripples and wake up to a golden sunrise on the water. Shared cabins, private bunks, and a chef who knows these waters by heart.",
-  },
-];
-
-const queenGallery = [
-  { src: "/houseboat/queen/queen-exterior.jpg", alt: "Vembanad Queen houseboat exterior" },
-  { src: "/houseboat/queen/queen-lounge-day-2.jpg", alt: "Lounge area with ornate ceiling" },
-  { src: "/houseboat/queen/queen-lounge-night-2.jpg", alt: "Lounge at night with warm lighting" },
-  { src: "/houseboat/queen/queen-bedroom-2.jpg", alt: "Luxury bedroom with ambient lighting" },
-  { src: "/houseboat/queen/queen-corridor.jpg", alt: "Elegant corridor with wooden flooring" },
-  { src: "/houseboat/queen/queen-bedroom-9.jpg", alt: "Bedroom with decorative wall art" },
-  { src: "/houseboat/queen/queen-lounge-night-5.jpg", alt: "Ceiling detail and seating area" },
-  { src: "/houseboat/queen/queen-bedroom-8.jpg", alt: "Bedroom with ornate headboard" },
-];
 
 const vessels = [
   {
     name: "Shikara",
+    slug: "shikara",
     tagline: "Glide in silence",
     capacity: "2–6 guests",
     duration: "1–3 hours",
-    price: "From ₹800/hour",
-    image: "/houseboat/vessels/shikara.jpg",
-    description:
-      "A handcrafted wooden canoe with cushioned seating and a canopy overhead. Perfect for couples or small groups wanting a quiet, intimate ride through narrow canals.",
+    description: "A handcrafted wooden canoe with cushioned seating and a canopy overhead. Perfect for couples wanting a quiet ride through narrow canals.",
+    image: "/shikara/shikara-1.jpg",
   },
   {
     name: "Kayak",
+    slug: "kayak",
     tagline: "Paddle your own path",
     capacity: "1–2 per kayak",
     duration: "2–4 hours",
-    price: "From ₹500/hour",
-    image: "/houseboat/vessels/kayak.jpg",
-    description:
-      "Explore hidden waterways at your own pace. Single and tandem kayaks available — no experience needed, just a sense of adventure.",
+    description: "Explore hidden waterways at your own pace. Single and tandem kayaks available — no experience needed, just adventure.",
+    image: "/kayak/kayak-1.jpg",
   },
   {
     name: "Speedboat",
+    slug: "speedboat",
     tagline: "Cover more water",
     capacity: "4–8 guests",
     duration: "1–2 hours",
-    price: "From ₹2,000/hour",
-    image: "/houseboat/vessels/speedboat.jpg",
-    description:
-      "See more of the backwaters in less time. Ideal for transfers between islands, quick sightseeing runs, or anyone who likes a little wind in their hair.",
+    description: "See more of the backwaters in less time. Ideal for transfers, quick sightseeing, or anyone who likes wind in their hair.",
+    image: "/speedboat/speedboat-1.jpg",
+  },
+];
+
+const queenGallery = [
+  { src: "/houseboat/exterior-water.jpg", alt: "Houseboat cruising the backwaters" },
+  { src: "/houseboat/lounge-1.jpg", alt: "Lounge area with ornate ceiling" },
+  { src: "/houseboat/bedroom-1.jpg", alt: "Luxury bedroom with ambient lighting" },
+  { src: "/houseboat/deck-1.jpg", alt: "Rooftop deck with backwater views" },
+  { src: "/houseboat/stairs.jpg", alt: "LED-lit staircase with water view" },
+  { src: "/houseboat/bedroom-4.jpg", alt: "Bedroom with wooden lattice design" },
+  { src: "/houseboat/lounge-2.jpg", alt: "Lounge with spiral ceiling" },
+  { src: "/houseboat/bedroom-2.jpg", alt: "Bedroom with diamond wall panels" },
+  { src: "/houseboat/bedroom-3.jpg", alt: "Bedroom with circular design" },
+  { src: "/houseboat/deck-2.jpg", alt: "Deck with greenery view" },
+  { src: "/houseboat/dining.jpg", alt: "Dining area with panoramic windows" },
+  { src: "/houseboat/exterior-dock.jpg", alt: "Houseboat docked at the jetty" },
+  { src: "/houseboat/deck-aerial.jpg", alt: "Rooftop deck aerial view" },
+  { src: "/houseboat/dining-wide.jpg", alt: "Dining hall with ornate ceiling" },
+  { src: "/houseboat/lounge-3.jpg", alt: "Lounge with backwater views" },
+  { src: "/houseboat/bedroom-5.jpg", alt: "Marble accent bedroom" },
+  { src: "/houseboat/bedroom-6.jpg", alt: "Bedroom with warm golden lighting" },
+  { src: "/houseboat/bedroom-7.jpg", alt: "Bedroom with decorative headboard" },
+];
+
+const steps = [
+  {
+    step: "01",
+    title: "Pick Your Experience",
+    description: "Choose between a day cruise or overnight stay on our shared houseboat.",
+  },
+  {
+    step: "02",
+    title: "Select Your Dates",
+    description: "Check availability and pick a date that works for you and your group.",
+  },
+  {
+    step: "03",
+    title: "Book & Board",
+    description: "Confirm your spot, show up at the dock, and let us handle the rest.",
   },
 ];
 
 const experiences = [
   {
-    title: "Backwater Cruises",
+    name: "Day Cruise",
+    slug: "day-cruise",
+    badge: "Most Booked",
+    badgeColor: "bg-ocean-600",
+    duration: "8 hours",
+    capacity: "Up to 15 guests",
+    price: "₹5,000",
+    image: "/houseboat/lounge-2.jpg",
     description:
-      "Drift through tranquil palm-lined canals as the world slows down around you. Every bend reveals a new vista.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 3v2.25m6.364.386-1.591 1.591M21 12h-2.25m-.386 6.364-1.591-1.591M12 18.75V21m-4.773-4.227-1.591 1.591M5.25 12H3m4.227-4.773L5.636 5.636M15.75 12a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0Z" />
-      </svg>
-    ),
+      "Private cabin on a shared deluxe houseboat. Cruise through Punnamada & Vembanad Lake with a Kerala lunch, tea, and snacks — all included.",
+    includes: ["Kerala lunch", "Welcome drinks", "Personal chef", "3-member crew"],
   },
   {
-    title: "Onboard Dining",
+    name: "Overnight Stay",
+    slug: "overnight-stay",
+    badge: "Best Experience",
+    badgeColor: "bg-ocean-900",
+    duration: "22 hours",
+    capacity: "Up to 10 guests",
+    price: "₹5,000",
+    image: "/houseboat/bedroom-1.jpg",
     description:
-      "A private chef prepares fresh catch and local delicacies as you watch the sunset from the upper deck.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M15.362 5.214A8.252 8.252 0 0 1 12 21 8.25 8.25 0 0 1 6.038 7.047 8.287 8.287 0 0 0 9 9.601a8.983 8.983 0 0 1 3.361-6.867 8.21 8.21 0 0 0 3 2.48Z" />
-        <path strokeLinecap="round" strokeLinejoin="round" d="M12 18a3.75 3.75 0 0 0 .495-7.468 5.99 5.99 0 0 0-1.925 3.547 5.975 5.975 0 0 1-2.133-1.001A3.75 3.75 0 0 0 12 18Z" />
-      </svg>
-    ),
-  },
-  {
-    title: "Sunrise on the Water",
-    description:
-      "Wake up to golden light reflecting off still waters. No alarm, no rush — just the gentle sound of ripples.",
-    icon: (
-      <svg className="h-8 w-8" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 15.75l5.159-5.159a2.25 2.25 0 0 1 3.182 0l5.159 5.159m-1.5-1.5 1.409-1.409a2.25 2.25 0 0 1 3.182 0l2.909 2.909M3.75 21h16.5A2.25 2.25 0 0 0 22.5 18.75V5.25A2.25 2.25 0 0 0 20.25 3H3.75A2.25 2.25 0 0 0 1.5 5.25v13.5A2.25 2.25 0 0 0 3.75 21Z" />
-      </svg>
-    ),
-  },
-];
-
-const testimonials = [
-  {
-    quote:
-      "We joined the shared overnight cruise as solo travelers and left as friends. The food, the sunset, the silence at dawn — nothing compares.",
-    author: "Priya & Arjun",
-    location: "Mumbai",
-    trip: "Overnight Stay",
-  },
-  {
-    quote:
-      "The food alone was worth the trip. Our chef made the freshest fish curry I've ever tasted, served as we floated past rice paddies. Unforgettable.",
-    author: "James Whitfield",
-    location: "London",
-    trip: "Weekend Voyage",
-  },
-  {
-    quote:
-      "We brought three generations of our family. The kids loved fishing off the deck, the grandparents loved the peace. Everyone found their version of paradise.",
-    author: "The Menon Family",
-    location: "Bangalore",
-    trip: "Day Cruise",
+      "Private cabin with AC (9 PM–6 AM). Check-in 1:30 PM, check-out 8:30 AM. All 4 meals included — lunch, snacks, dinner & breakfast.",
+    includes: ["4 meals included", "AC cabin", "Personal chef", "22-hour cruise"],
   },
 ];
 
 export default function Home() {
   return (
     <>
-      <Header />
       <FloatingButtons />
 
       {/* Hero */}
-      <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-ocean-950">
-        <Image
-          src="/houseboat/queen/queen-exterior.jpg"
-          alt="Vembanad Queen houseboat on the backwaters"
-          fill
-          priority
-          className="object-cover object-center"
-          sizes="100vw"
-        />
-        <div className="absolute inset-0 bg-ocean-950/50" />
+      <section className="px-4 pt-6 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-7xl">
+          {/* Image */}
+          <div className="relative overflow-hidden rounded-3xl">
+            <div className="relative aspect-[3/4] sm:aspect-[2/1]">
+              <Image
+                src="/houseboat/carrebian/carrebian.jpeg"
+                alt="Royal Caribbean houseboat on the backwaters"
+                fill
+                priority
+                className="object-cover"
+                sizes="100vw"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/30 to-black/10" />
 
-        <div className="relative z-10 mx-auto max-w-4xl px-6 text-center">
-          <p className="mb-4 text-sm font-medium uppercase tracking-[0.2em] text-ocean-300">
-            Shared Houseboat Experiences
-          </p>
-          <h1 className="text-4xl font-bold leading-tight tracking-tight text-white sm:text-5xl md:text-7xl">
-            Share the backwaters.
-            <br />
-            <span className="text-ocean-300">Share the magic.</span>
-          </h1>
-          <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-white/70 sm:text-xl">
-            Book your spot on a shared luxury houseboat. Meet fellow travelers,
-            split the cost, and experience the backwaters without chartering
-            an entire vessel.
-          </p>
-          <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
+              <div className="absolute inset-0 flex flex-col items-center justify-center px-6 text-center">
+                <p className="mb-3 text-xs font-medium uppercase tracking-[0.2em] text-white/80 sm:text-sm">
+                  Kerala Backwaters
+                </p>
+                <h1 className="max-w-3xl text-3xl font-bold leading-tight text-white sm:text-5xl lg:text-6xl">
+                  Shared Luxury
+                  <br />
+                  Houseboat Experiences
+                </h1>
+                <p className="mx-auto mt-4 max-w-md text-sm leading-relaxed text-white/70 sm:max-w-xl sm:text-lg">
+                  Book your spot, meet fellow travelers, and cruise the backwaters
+                  aboard the Vembanad Queen.
+                </p>
+                <a
+                  href="#sharing"
+                  className="mt-6 rounded-full bg-ocean-600 px-7 py-3 text-sm font-semibold text-white transition-colors hover:bg-ocean-700 sm:hidden"
+                >
+                  Explore Experiences
+                </a>
+              </div>
+            </div>
+
+            {/* Booking bar — desktop only, overlaid */}
+            <div className="absolute bottom-0 left-0 right-0 hidden px-8 pb-6 sm:block">
+              <div className="mx-auto flex max-w-3xl items-end gap-4 rounded-2xl bg-white/95 p-5 shadow-xl backdrop-blur-md">
+                <div className="flex-1">
+                  <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                    </svg>
+                    Travel Dates
+                  </label>
+                  <input
+                    type="date"
+                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400"
+                  />
+                </div>
+                <div className="flex-1">
+                  <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+                    </svg>
+                    Travelers
+                  </label>
+                  <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
+                    <option>2 Person</option>
+                    <option>3 Person</option>
+                    <option>4 Person</option>
+                    <option>5+ Person</option>
+                  </select>
+                </div>
+                <div className="flex-1">
+                  <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                    <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                    </svg>
+                    Experience
+                  </label>
+                  <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
+                    <option>All Experiences</option>
+                    <option>Day Cruise</option>
+                    <option>Overnight Stay</option>
+                  </select>
+                </div>
+                <a
+                  href="#sharing"
+                  className="rounded-xl bg-ocean-600 px-8 py-2.5 text-center text-sm font-semibold text-white transition-colors hover:bg-ocean-700"
+                >
+                  Check Availability
+                </a>
+              </div>
+            </div>
+          </div>
+
+          {/* Booking bar — mobile only, below image */}
+          <div className="mt-4 flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-100 sm:hidden">
+            <div>
+              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
+                </svg>
+                Travel Dates
+              </label>
+              <input
+                type="date"
+                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400"
+              />
+            </div>
+            <div className="grid grid-cols-2 gap-3">
+              <div>
+                <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
+                  </svg>
+                  Travelers
+                </label>
+                <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
+                  <option>2 Person</option>
+                  <option>3 Person</option>
+                  <option>4 Person</option>
+                  <option>5+ Person</option>
+                </select>
+              </div>
+              <div>
+                <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
+                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  Experience
+                </label>
+                <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
+                  <option>All Experiences</option>
+                  <option>Day Cruise</option>
+                  <option>Overnight Stay</option>
+                </select>
+              </div>
+            </div>
             <a
               href="#sharing"
-              className="w-full rounded-full bg-white px-8 py-4 text-base font-semibold text-ocean-950 shadow-lg transition-all hover:bg-ocean-100 hover:shadow-xl sm:w-auto"
+              className="rounded-xl bg-ocean-600 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-ocean-700"
             >
-              View Shared Cruises
-            </a>
-            <a
-              href="#vessels"
-              className="w-full rounded-full border border-white/20 px-8 py-4 text-base font-semibold text-white transition-all hover:border-white/40 hover:bg-white/5 sm:w-auto"
-            >
-              More Ways to Explore
+              Check Availability
             </a>
           </div>
-        </div>
-
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-          <svg className="h-6 w-6 text-white/40" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-            <path strokeLinecap="round" strokeLinejoin="round" d="m19.5 8.25-7.5 7.5-7.5-7.5" />
-          </svg>
         </div>
       </section>
 
-      {/* Shared Houseboat — Primary Section */}
-      <section id="sharing" className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-5 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.15em] text-ocean-600">
-              Shared Houseboats
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-ocean-950 sm:text-4xl">
-              Jump aboard. Pay per person.
+      {/* Shared Houseboat — Dedicated Section */}
+      <section id="sharing" className="pt-10 pb-10 sm:pt-16 sm:pb-14">
+        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+          {/* Header */}
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
+              Luxury Houseboat. Budget-Friendly Price.
             </h2>
-            <p className="mt-4 text-lg leading-relaxed text-ocean-700/70">
-              No need to book the whole boat. Pick a cruise, grab your spot, and
-              share an unforgettable experience with like-minded travelers.
+            <p className="mx-auto mt-3 hidden max-w-lg text-sm leading-relaxed text-gray-400 sm:block">
+              Starting at ₹5,000 for two — share a deluxe houseboat and cruise the backwaters together.
             </p>
           </div>
 
-          <div className="mx-auto mt-14 grid max-w-3xl gap-6 sm:gap-8 sm:grid-cols-2">
-            {sharedHouseboats.map((cruise) => (
-              <div
-                key={cruise.name}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-ocean-100 bg-white transition-all hover:border-ocean-300 hover:shadow-xl"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={cruise.image}
-                    alt={cruise.name}
-                    fill
-                    className="object-cover"
-                    sizes="(max-width: 640px) 100vw, 50vw"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-ocean-950/80 via-ocean-950/30 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 px-6 pb-5">
-                    <span className="inline-block rounded-full bg-white/20 px-3 py-1 text-xs font-semibold text-white backdrop-blur-sm">
-                      {cruise.highlight}
-                    </span>
-                    <h3 className="mt-3 text-2xl font-bold text-white">
-                      {cruise.name}
-                    </h3>
-                    <p className="mt-1 text-sm text-white/70">{cruise.duration}</p>
-                  </div>
-                </div>
+          {/* Value props */}
+          <div className="mx-auto mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-3 sm:mt-10 sm:gap-x-8">
+            {[
+              { label: "₹5,000 for two" },
+              { label: "All meals included" },
+              { label: "Meet fellow travelers" },
+              { label: "Verified & safe" },
+            ].map((prop) => (
+              <span key={prop.label} className="flex items-center gap-2 text-sm text-gray-500">
+                <svg className="h-4 w-4 text-ocean-600" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
+                  <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
+                </svg>
+                {prop.label}
+              </span>
+            ))}
+          </div>
 
-                <div className="flex flex-1 flex-col p-6">
-                  <p className="text-sm leading-relaxed text-ocean-700/70">
-                    {cruise.description}
+          {/* Shared experience cards */}
+          <div className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-4 sm:mt-10 sm:gap-5">
+            {experiences.map((card) => (
+              <div key={card.name} className="group">
+                {/* Image */}
+                <Link href={`/experiences/${card.slug}`} className="relative block aspect-square overflow-hidden rounded-2xl">
+                  <Image
+                    src={card.image}
+                    alt={card.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 50vw, 50vw"
+                  />
+                </Link>
+
+                {/* Info */}
+                <div className="mt-3 sm:mt-4">
+                  <h3 className="text-sm font-semibold text-gray-900 sm:text-base">{card.name}</h3>
+                  <p className="mt-0.5 text-xs text-gray-400 sm:text-sm">
+                    {card.duration} · {card.capacity}
+                  </p>
+                  <p className="mt-1 text-sm font-bold text-gray-900 sm:text-base">
+                    From <span>{card.price}</span>
                   </p>
 
-                  {/* What's included */}
-                  <ul className="mt-5 space-y-2.5">
-                    {cruise.includes.map((item) => (
-                      <li
-                        key={item}
-                        className="flex items-start gap-2.5 text-sm text-ocean-800"
-                      >
-                        <svg className="mt-0.5 h-4 w-4 shrink-0 text-ocean-500" fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">
-                          <path strokeLinecap="round" strokeLinejoin="round" d="m4.5 12.75 6 6 9-13.5" />
-                        </svg>
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
-
-                  {/* Meta + CTA */}
-                  <div className="mt-auto flex items-center justify-between border-t border-ocean-100 pt-5 mt-6">
-                    <span className="inline-flex items-center gap-1.5 text-xs font-medium text-ocean-600">
-                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M18 18.72a9.094 9.094 0 0 0 3.741-.479 3 3 0 0 0-4.682-2.72m.94 3.198.001.031c0 .225-.012.447-.037.666A11.944 11.944 0 0 1 12 21c-2.17 0-4.207-.576-5.963-1.584A6.062 6.062 0 0 1 6 18.719m12 0a5.971 5.971 0 0 0-.941-3.197m0 0A5.995 5.995 0 0 0 12 12.75a5.995 5.995 0 0 0-5.058 2.772m0 0a3 3 0 0 0-4.681 2.72 8.986 8.986 0 0 0 3.74.477m.94-3.197a5.971 5.971 0 0 0-.94 3.197M15 6.75a3 3 0 1 1-6 0 3 3 0 0 1 6 0Zm6 3a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Zm-13.5 0a2.25 2.25 0 1 1-4.5 0 2.25 2.25 0 0 1 4.5 0Z" />
-                      </svg>
-                      {cruise.groupSize}
-                    </span>
+                  {/* Booking buttons */}
+                  <div className="mt-3 flex gap-2">
                     <a
-                      href="#book"
-                      className="rounded-full bg-ocean-950 px-5 py-2.5 text-sm font-semibold text-white transition-colors hover:bg-ocean-800"
+                      href="tel:+916282477940"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 sm:h-10 sm:w-10"
+                      aria-label="Call to book"
                     >
-                      Book a Spot
+                      <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                      </svg>
+                    </a>
+                    <a
+                      href={`https://wa.me/916282477940?text=${encodeURIComponent(
+                        `Hi! I'd like to book the ${card.name} (${card.price} for 2 persons). Please share availability.`,
+                      )}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ocean-600 py-2 text-xs font-semibold text-white transition-colors hover:bg-ocean-700 sm:text-sm"
+                    >
+                      <svg className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4" viewBox="0 0 24 24">
+                        <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
+                      </svg>
+                      Book Your Room
                     </a>
                   </div>
                 </div>
@@ -264,61 +335,266 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Queen Gallery */}
-          <div className="mx-auto mt-16 max-w-5xl">
-            <h3 className="text-center text-xl font-semibold text-ocean-950">
-              Life aboard the Vembanad Queen
-            </h3>
-            <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 md:grid-cols-4">
-              {queenGallery.map((photo) => (
-                <div
-                  key={photo.src}
-                  className="group relative aspect-square overflow-hidden rounded-xl"
-                >
+        </div>
+      </section>
+
+      {/* Private Houseboats */}
+      <section className="pb-10 sm:pb-14">
+        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+              Private Houseboats
+            </h2>
+            <p className="mx-auto mt-2 max-w-md text-sm text-gray-400">
+              Book the entire boat for your group — choose by number of bedrooms
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
+            {[
+              { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/bedroom-1.jpg" },
+              { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/bedroom-2.jpg" },
+              { beds: 3, guests: "6–12", price: "₹16,000", image: "/houseboat/bedroom-3.jpg" },
+              { beds: 4, guests: "8–16", price: "₹22,000", image: "/houseboat/bedroom-4.jpg" },
+              { beds: 5, guests: "10–20", price: "₹28,000", image: "/houseboat/bedroom-5.jpg" },
+              { beds: 6, guests: "12–24", price: "₹34,000", image: "/houseboat/bedroom-6.jpg" },
+              { beds: 7, guests: "14–28", price: "₹40,000", image: "/houseboat/bedroom-7.jpg" },
+              { beds: 8, guests: "16–32", price: "₹46,000", image: "/houseboat/bedroom-1.jpg" },
+              { beds: 9, guests: "18–36", price: "₹52,000", image: "/houseboat/bedroom-2.jpg" },
+              { beds: 10, guests: "20–40", price: "₹58,000", image: "/houseboat/bedroom-3.jpg" },
+              { beds: 11, guests: "22–44", price: "₹64,000", image: "/houseboat/bedroom-4.jpg" },
+              { beds: 12, guests: "24–48", price: "₹70,000", image: "/houseboat/bedroom-5.jpg" },
+              { beds: 13, guests: "26–52", price: "₹76,000", image: "/houseboat/bedroom-6.jpg" },
+              { beds: 14, guests: "28–56", price: "₹82,000", image: "/houseboat/bedroom-7.jpg" },
+            ].map((boat) => (
+              <a
+                key={boat.beds}
+                href={`https://wa.me/916282477940?text=${encodeURIComponent(`Hi! I'm interested in a ${boat.beds} bedroom private houseboat (from ${boat.price}). Please share availability.`)}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
                   <Image
-                    src={photo.src}
-                    alt={photo.alt}
+                    src={boat.image}
+                    alt={`${boat.beds} bedroom houseboat`}
                     fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, (max-width: 768px) 33vw, 25vw"
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 14vw"
                   />
                 </div>
-              ))}
+                <div className="mt-2">
+                  <h3 className="text-xs font-semibold text-gray-900 sm:text-sm">{boat.beds} Bedroom</h3>
+                  <p className="text-[11px] text-gray-400">{boat.guests} guests</p>
+                  <p className="mt-0.5 text-xs font-bold text-gray-900 sm:text-sm">From {boat.price}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Vessels */}
+      <section id="vessels" className="bg-gray-50 py-10 sm:py-14">
+        <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+              More Ways to Explore
+            </h2>
+            <p className="mt-2 text-sm text-gray-400">
+              Beyond houseboats — explore the backwaters your way
+            </p>
+          </div>
+
+          <div className="mx-auto mt-6 grid max-w-2xl grid-cols-3 gap-3 sm:mt-8 sm:gap-4">
+            {vessels.map((v) => (
+              <Link
+                key={v.name}
+                href={`/experiences/${v.slug}`}
+                className="group"
+              >
+                <div className="relative aspect-[3/4] overflow-hidden rounded-2xl sm:aspect-square">
+                  <Image
+                    src={v.image}
+                    alt={v.name}
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-105"
+                    sizes="(max-width: 640px) 33vw, 25vw"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
+                  <div className="absolute bottom-0 left-0 right-0 p-2.5 sm:p-4">
+                    <h3 className="text-xs font-semibold text-white sm:text-base">{v.name}</h3>
+                    <p className="mt-0.5 hidden text-[11px] text-white/60 sm:block">{v.capacity} · {v.duration}</p>
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Gallery */}
+      <section className="py-10 sm:py-14">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="text-center">
+            <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+              Life Aboard
+            </h2>
+            <p className="mt-2 text-sm text-gray-400">
+              A glimpse of what awaits you on the water
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-3 gap-1.5 sm:grid-cols-4 sm:gap-2 lg:grid-cols-6">
+            {queenGallery.map((photo) => (
+              <div
+                key={photo.src}
+                className="group relative aspect-square overflow-hidden rounded-lg"
+              >
+                <Image
+                  src={photo.src}
+                  alt={photo.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 group-hover:scale-110"
+                  sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 16vw"
+                />
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* How It Works */}
+      <section id="how-it-works" className="py-16 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl bg-ocean-900">
+            <div className="px-6 py-10 sm:px-12 sm:py-14">
+              <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">
+                How It Works
+              </h2>
+
+              <div className="mt-10 grid gap-6 sm:grid-cols-3 sm:gap-0">
+                {steps.map((s, i) => (
+                  <div key={s.step} className={`relative flex flex-col items-center text-center ${i < steps.length - 1 ? "sm:border-r sm:border-white/10" : ""}`}>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-ocean-400 text-sm font-bold text-ocean-400">
+                      {s.step}
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-white">
+                      {s.title}
+                    </h3>
+                    <p className="mt-1.5 max-w-[220px] text-sm leading-relaxed text-white/50">
+                      {s.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-10 flex justify-center">
+                <a
+                  href={`https://wa.me/916282477940?text=${encodeURIComponent("Hi! I'd like to book a houseboat experience. Please share availability.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-ocean-900 transition-colors hover:bg-ocean-50"
+                >
+                  Start Booking
+                </a>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Experiences */}
-      <section id="experiences" className="bg-ocean-50 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.15em] text-ocean-600">
-              The Experience
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-ocean-950 sm:text-4xl">
-              More than a stay. A way of being.
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-ocean-700/70">
-              Every moment on board is designed to immerse you in the rhythm of
-              the backwaters.
-            </p>
+      {/* Reviews */}
+      <section id="stories" className="bg-gray-50 py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
+          {/* Header with Google badge */}
+          <div className="flex flex-col items-center gap-4 text-center sm:flex-row sm:justify-between sm:text-left">
+            <div>
+              <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+                What Our Guests Say
+              </h2>
+              <p className="mt-1 text-sm text-gray-400">Verified reviews from real travelers</p>
+            </div>
+            <div className="flex items-center gap-3 rounded-2xl bg-white px-5 py-3 shadow-sm ring-1 ring-gray-100">
+              <svg className="h-6 w-6" viewBox="0 0 24 24">
+                <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
+                <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+              </svg>
+              <div>
+                <div className="flex items-center gap-1">
+                  <span className="text-lg font-bold text-gray-900">5.0</span>
+                  <div className="flex gap-0.5 text-amber-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} className="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                      </svg>
+                    ))}
+                  </div>
+                </div>
+                <p className="text-[11px] text-gray-400">Google Reviews</p>
+              </div>
+            </div>
           </div>
 
-          <div className="mx-auto mt-16 grid max-w-5xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {experiences.map((exp) => (
+          {/* Review cards */}
+          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+            {[
+              {
+                name: "Priya & Arjun",
+                location: "Mumbai",
+                time: "2 weeks ago",
+                text: "We joined the shared overnight cruise as solo travelers and left as friends. The food, the sunset, the silence at dawn — nothing compares. Highlight of our Kerala trip!",
+              },
+              {
+                name: "Rahul Menon",
+                location: "Bangalore",
+                time: "1 month ago",
+                text: "Absolutely worth it at ₹5,000 for two. The rooms are luxurious, crew was super friendly, and the Kerala meals were authentic. Will definitely come back.",
+              },
+              {
+                name: "Sarah & James",
+                location: "London, UK",
+                time: "3 weeks ago",
+                text: "Best value houseboat experience in Alleppey. We compared many options and this was the clear winner. Clean rooms, great food, stunning backwater views.",
+              },
+            ].map((review) => (
               <div
-                key={exp.title}
-                className="group rounded-2xl bg-white p-8 shadow-sm transition-all hover:shadow-md"
+                key={review.name}
+                className="flex flex-col rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-100 sm:p-6"
               >
-                <div className="flex h-14 w-14 items-center justify-center rounded-xl bg-ocean-50 text-ocean-600 transition-colors group-hover:bg-ocean-600 group-hover:text-white">
-                  {exp.icon}
+                <div className="flex items-start justify-between">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-ocean-100 text-sm font-bold text-ocean-700">
+                      {review.name[0]}
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-gray-900">{review.name}</p>
+                      <p className="text-xs text-gray-400">{review.location}</p>
+                    </div>
+                  </div>
+                  <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24">
+                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
+                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
+                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
+                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
+                  </svg>
                 </div>
-                <h3 className="mt-6 text-xl font-semibold text-ocean-950">
-                  {exp.title}
-                </h3>
-                <p className="mt-3 text-base leading-relaxed text-ocean-700/70">
-                  {exp.description}
+
+                <div className="mt-3 flex items-center gap-2">
+                  <div className="flex gap-0.5 text-amber-400">
+                    {Array.from({ length: 5 }).map((_, i) => (
+                      <svg key={i} className="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+                        <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
+                      </svg>
+                    ))}
+                  </div>
+                  <span className="text-xs text-gray-300">{review.time}</span>
+                </div>
+
+                <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-500">
+                  {review.text}
                 </p>
               </div>
             ))}
@@ -326,234 +602,125 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Choose Your Vessel */}
-      <section id="vessels" className="bg-white py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.15em] text-ocean-600">
-              More Ways to Explore
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-ocean-950 sm:text-4xl">
-              Choose your vessel
-            </h2>
-            <p className="mt-4 text-lg leading-relaxed text-ocean-700/70">
-              Beyond houseboats — explore the backwaters your way.
-            </p>
-          </div>
-
-          <div className="mx-auto mt-14 grid max-w-6xl gap-6 sm:gap-8 lg:grid-cols-3">
-            {vessels.map((v) => (
-              <div
-                key={v.name}
-                className="group relative flex flex-col overflow-hidden rounded-2xl border border-ocean-100 transition-all hover:border-ocean-200 hover:shadow-lg"
-              >
-                <div className="relative aspect-[4/3] overflow-hidden">
-                  <Image
-                    src={v.image}
-                    alt={v.name}
-                    fill
-                    className="object-cover transition-transform duration-300 group-hover:scale-105"
-                    sizes="(max-width: 768px) 100vw, 33vw"
-                  />
-                </div>
-
-                <div className="flex flex-1 flex-col p-6">
-                  <h3 className="text-xl font-bold text-ocean-950">
-                    {v.name}
-                  </h3>
-                  <p className="mt-0.5 text-sm font-medium text-ocean-500">
-                    {v.tagline}
-                  </p>
-                  <p className="mt-3 flex-1 text-sm leading-relaxed text-ocean-700/70">
-                    {v.description}
-                  </p>
-
-                  <div className="mt-5 flex flex-wrap gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-ocean-50 px-3 py-1 text-xs font-medium text-ocean-700">
-                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
-                      </svg>
-                      {v.capacity}
-                    </span>
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-ocean-50 px-3 py-1 text-xs font-medium text-ocean-700">
-                      <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                        <path strokeLinecap="round" strokeLinejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z" />
-                      </svg>
-                      {v.duration}
-                    </span>
-                  </div>
-
-                  <div className="mt-5 flex items-center justify-between border-t border-ocean-100 pt-5">
-                    <span className="text-lg font-bold text-ocean-950">
-                      {v.price}
-                    </span>
-                    <a
-                      href="#book"
-                      className="rounded-full bg-ocean-950 px-5 py-2 text-sm font-semibold text-white transition-colors hover:bg-ocean-800"
-                    >
-                      Book
-                    </a>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Testimonials */}
-      <section id="stories" className="bg-ocean-950 py-20 sm:py-28">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="mx-auto max-w-2xl text-center">
-            <p className="text-sm font-medium uppercase tracking-[0.15em] text-ocean-300">
-              Guest Stories
-            </p>
-            <h2 className="mt-2 text-3xl font-bold tracking-tight text-white sm:text-4xl">
-              Don&apos;t take our word for it
-            </h2>
-          </div>
-
-          <div className="mx-auto mt-16 grid max-w-6xl gap-8 sm:grid-cols-2 lg:grid-cols-3">
-            {testimonials.map((t) => (
-              <figure
-                key={t.author}
-                className="flex flex-col rounded-2xl border border-white/10 bg-white/5 p-8"
-              >
-                <div className="mb-4 flex gap-1 text-ocean-400">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <svg key={i} className="h-4 w-4 fill-current" viewBox="0 0 20 20">
-                      <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
-                    </svg>
-                  ))}
-                </div>
-                <blockquote className="flex-1 text-base leading-relaxed text-white/80">
-                  &ldquo;{t.quote}&rdquo;
-                </blockquote>
-                <figcaption className="mt-6 border-t border-white/10 pt-6">
-                  <p className="text-sm font-semibold text-white">{t.author}</p>
-                  <p className="mt-0.5 text-sm text-white/50">
-                    {t.location} &middot; {t.trip}
-                  </p>
-                </figcaption>
-              </figure>
-            ))}
-          </div>
-        </div>
-      </section>
-
       {/* Booking CTA */}
-      <section
-        id="book"
-        className="relative overflow-hidden bg-gradient-to-br from-ocean-800 via-ocean-700 to-ocean-600 py-20 sm:py-28"
-      >
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_rgba(139,189,232,0.15)_0%,_transparent_60%)]" />
-        <div className="relative z-10 mx-auto max-w-3xl px-6 text-center lg:px-8">
-          <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
-            Ready to set sail?
-          </h2>
-          <p className="mx-auto mt-4 max-w-xl text-lg leading-relaxed text-white/70">
-            Tell us your dates, your group size, and the kind of experience
-            you&apos;re looking for. We&apos;ll craft the perfect voyage.
-          </p>
-
-          <div className="mx-auto mt-10 flex max-w-md flex-col gap-4 sm:flex-row">
-            <input
-              type="email"
-              placeholder="Your email address"
-              className="flex-1 rounded-full border border-white/20 bg-white/10 px-6 py-3.5 text-sm text-white placeholder-white/40 backdrop-blur-sm transition-colors focus:border-ocean-300 focus:outline-none"
-            />
-            <button
-              type="button"
-              className="rounded-full bg-white px-8 py-3.5 text-sm font-semibold text-ocean-950 transition-colors hover:bg-ocean-100"
+      <section id="book" className="px-4 pb-16 sm:px-6 lg:px-8">
+        <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16 sm:py-20">
+          <Image
+            src="/houseboat/exterior-water.jpg"
+            alt="Houseboat on backwaters"
+            fill
+            className="object-cover"
+            sizes="100vw"
+          />
+          <div className="absolute inset-0 bg-black/70" />
+          <div className="relative z-10">
+            <h2 className="text-3xl font-bold tracking-tight text-white sm:text-4xl">
+              Ready to set sail?
+            </h2>
+            <p className="mx-auto mt-4 max-w-xl text-base leading-relaxed text-white/60">
+              Call or WhatsApp us to check availability and book your spot.
+            </p>
+            <a
+              href="tel:+916282477940"
+              className="mx-auto mt-6 flex w-fit items-center gap-3 rounded-2xl bg-white/10 px-6 py-4 ring-1 ring-white/20 transition-colors hover:bg-white/15"
             >
-              Get in Touch
-            </button>
+              <svg className="h-5 w-5 text-ocean-400" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+              </svg>
+              <span className="text-xl font-bold tracking-wide text-white sm:text-2xl">+91 62824 77940</span>
+            </a>
+            <div className="mx-auto mt-6 flex max-w-xs gap-3">
+              <a
+                href="tel:+916282477940"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-white px-6 py-3 text-sm font-semibold text-ocean-900 transition-colors hover:bg-ocean-50"
+              >
+                Call Now
+              </a>
+              <a
+                href={`https://wa.me/916282477940?text=${encodeURIComponent("Hi! I'd like to book a houseboat experience. Please share availability.")}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-ocean-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ocean-700"
+              >
+                WhatsApp
+              </a>
+            </div>
           </div>
-
-          <p className="mt-4 text-xs text-white/40">
-            No spam. We&apos;ll reply within 24 hours with availability and
-            pricing.
-          </p>
         </div>
       </section>
 
       {/* Footer */}
-      <footer id="contact" className="bg-ocean-950 py-16">
-        <div className="mx-auto max-w-7xl px-6 lg:px-8">
-          <div className="grid gap-12 sm:grid-cols-2 lg:grid-cols-4">
-            <div className="sm:col-span-2 lg:col-span-1">
-              <span className="text-xl font-bold text-white">
-                HouseBoatCompany
-              </span>
-              <p className="mt-4 max-w-xs text-sm leading-relaxed text-white/50">
-                Shared luxury houseboat experiences on the backwaters. Because
-                the best journeys aren&apos;t measured in miles.
+      <footer id="contact" className="px-4 pb-24 sm:pb-8 sm:px-6 lg:px-8">
+        <div className="mx-auto max-w-6xl rounded-3xl bg-gray-50 px-8 py-12 sm:px-12 sm:py-16">
+          <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
+            <div>
+              <div className="flex items-center gap-2">
+                <Image
+                  src="/logo.jpeg"
+                  alt="Alleppey House Boat Company"
+                  width={36}
+                  height={36}
+                  className="h-9 w-9 rounded-full object-cover"
+                />
+                <span className="text-lg font-bold text-gray-900">
+                  Alleppey HouseBoat Company
+                </span>
+              </div>
+              <p className="mt-4 max-w-xs text-sm leading-relaxed text-gray-400">
+                Curated houseboat experiences designed for modern explorers.
               </p>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white/70">
-                Quick Links
-              </h4>
+              <h4 className="text-sm font-semibold text-gray-900">Company</h4>
               <ul className="mt-4 space-y-3">
-                {navLinks.map((link) => (
-                  <li key={link.href}>
-                    <a
-                      href={link.href}
-                      className="text-sm text-white/50 transition-colors hover:text-white"
-                    >
-                      {link.label}
-                    </a>
-                  </li>
-                ))}
+                <li><a href="#sharing" className="text-sm text-gray-400 hover:text-gray-600">Experiences</a></li>
+                <li><a href="#vessels" className="text-sm text-gray-400 hover:text-gray-600">Vessels</a></li>
+                <li><a href="#how-it-works" className="text-sm text-gray-400 hover:text-gray-600">How It Works</a></li>
+                <li><a href="#stories" className="text-sm text-gray-400 hover:text-gray-600">Reviews</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white/70">
-                Contact
-              </h4>
-              <ul className="mt-4 space-y-3 text-sm text-white/50">
-                <li>Alleppey, Kerala, India</li>
-                <li>+91 98765 43210</li>
-                <li>hello@houseboatcompany.in</li>
+              <h4 className="text-sm font-semibold text-gray-900">Support</h4>
+              <ul className="mt-4 space-y-3">
+                <li><a href="#" className="text-sm text-gray-400 hover:text-gray-600">Help Center</a></li>
+                <li><a href="#" className="text-sm text-gray-400 hover:text-gray-600">Terms</a></li>
+                <li><a href="#" className="text-sm text-gray-400 hover:text-gray-600">Privacy</a></li>
+                <li><a href="#" className="text-sm text-gray-400 hover:text-gray-600">Cancellation</a></li>
               </ul>
             </div>
             <div>
-              <h4 className="text-sm font-semibold uppercase tracking-wider text-white/70">
-                Hours
-              </h4>
-              <ul className="mt-4 space-y-3 text-sm text-white/50">
-                <li>Check-in: 12:00 PM</li>
-                <li>Check-out: 9:00 AM</li>
-                <li>Office: 8 AM – 8 PM IST</li>
+              <h4 className="text-sm font-semibold text-gray-900">Contact Us</h4>
+              <ul className="mt-4 space-y-3 text-sm text-gray-400">
+                <li className="flex items-start gap-2">
+                  <svg className="mt-0.5 h-4 w-4 shrink-0 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
+                  </svg>
+                  Alleppey, Kerala, India
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 shrink-0 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M2.25 6.75c0 8.284 6.716 15 15 15h2.25a2.25 2.25 0 0 0 2.25-2.25v-1.372c0-.516-.351-.966-.852-1.091l-4.423-1.106c-.44-.11-.902.055-1.173.417l-.97 1.293c-.282.376-.769.542-1.21.38a12.035 12.035 0 0 1-7.143-7.143c-.162-.441.004-.928.38-1.21l1.293-.97c.363-.271.527-.734.417-1.173L6.963 3.102a1.125 1.125 0 0 0-1.091-.852H4.5A2.25 2.25 0 0 0 2.25 4.5v2.25Z" />
+                  </svg>
+                  +91 62824 77940
+                </li>
+                <li className="flex items-center gap-2">
+                  <svg className="h-4 w-4 shrink-0 text-gray-300" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" />
+                  </svg>
+                  hello@houseboatcompany.in
+                </li>
               </ul>
             </div>
           </div>
 
-          <div className="mt-16 flex flex-col items-center justify-between gap-4 border-t border-white/10 pt-8 sm:flex-row">
-            <p className="text-xs text-white/30">
+          <div className="mt-10 border-t border-gray-200 pt-8 text-center">
+            <p className="text-xs text-gray-300">
               &copy; 2026 HouseBoatCompany. All rights reserved.
             </p>
-            <div className="flex gap-6">
-              <a href="#" className="text-xs text-white/30 hover:text-white/60">
-                Privacy Policy
-              </a>
-              <a href="#" className="text-xs text-white/30 hover:text-white/60">
-                Terms of Service
-              </a>
-              <a href="#" className="text-xs text-white/30 hover:text-white/60">
-                Cancellation Policy
-              </a>
-            </div>
           </div>
         </div>
       </footer>
     </>
   );
 }
-
-const navLinks = [
-  { href: "#sharing", label: "Shared Houseboats" },
-  { href: "#vessels", label: "Vessels" },
-  { href: "#stories", label: "Guest Stories" },
-  { href: "#contact", label: "Contact" },
-];

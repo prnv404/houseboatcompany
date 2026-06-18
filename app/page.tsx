@@ -230,7 +230,7 @@ export default function Home() {
           </div>
 
           {/* Shared experience cards */}
-          <div className="mx-auto mt-8 grid max-w-2xl grid-cols-2 gap-4 sm:mt-10 sm:gap-5">
+          <div className="mx-auto mt-8 grid max-w-4xl grid-cols-2 gap-4 sm:mt-10 sm:gap-6">
             {experiences.map((card) => (
               <div key={card.name} className="group">
                 {/* Image */}
@@ -258,7 +258,7 @@ export default function Home() {
                   <div className="mt-3 flex gap-2">
                     <a
                       href="tel:+916282477940"
-                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50 sm:h-10 sm:w-10"
+                      className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full border border-gray-200 text-gray-500 transition-colors hover:bg-gray-50"
                       aria-label="Call to book"
                     >
                       <svg className="h-4 w-4" fill="none" viewBox="0 0 24 24" strokeWidth={1.8} stroke="currentColor">
@@ -271,12 +271,12 @@ export default function Home() {
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex flex-1 items-center justify-center gap-2 rounded-full bg-ocean-600 py-2 text-xs font-semibold text-white transition-colors hover:bg-ocean-700 sm:text-sm"
+                      className="flex flex-1 items-center justify-center gap-1.5 rounded-full bg-ocean-600 py-2 text-xs font-semibold text-white transition-colors hover:bg-ocean-700 sm:text-sm"
                     >
-                      <svg className="h-3.5 w-3.5 fill-current sm:h-4 sm:w-4" viewBox="0 0 24 24">
+                      <svg className="h-3.5 w-3.5 fill-current" viewBox="0 0 24 24">
                         <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.149-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.71.306 1.263.489 1.694.625.712.227 1.36.195 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.002-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z" />
                       </svg>
-                      Book Your Room
+                      Book Now
                     </a>
                   </div>
                 </div>
@@ -299,7 +299,7 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-3 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
             {[
               { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/bedroom-1.jpg" },
               { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/bedroom-2.jpg" },
@@ -382,6 +382,65 @@ export default function Home() {
         </div>
       </section>
 
+      {/* How It Works */}
+      <section id="how-it-works" className="py-10 sm:py-24">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="overflow-hidden rounded-3xl bg-gray-950">
+            <div className="px-6 py-10 sm:px-12 sm:py-14">
+              <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">
+                How It Works
+              </h2>
+
+              {/* Desktop — centered grid */}
+              <div className="mt-10 hidden gap-0 sm:grid sm:grid-cols-3">
+                {steps.map((s, i) => (
+                  <div key={s.step} className={`relative flex flex-col items-center text-center ${i < steps.length - 1 ? "border-r border-white/10" : ""}`}>
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-ocean-400 text-sm font-bold text-ocean-400">
+                      {s.step}
+                    </div>
+                    <h3 className="mt-4 text-base font-semibold text-white">
+                      {s.title}
+                    </h3>
+                    <p className="mt-1.5 max-w-[220px] text-sm leading-relaxed text-white/50">
+                      {s.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              {/* Mobile — left-aligned timeline */}
+              <div className="mt-8 flex flex-col gap-6 sm:hidden">
+                {steps.map((s, i) => (
+                  <div key={s.step} className="flex gap-4">
+                    <div className="flex flex-col items-center">
+                      <div className="flex h-9 w-9 items-center justify-center rounded-full bg-ocean-600 text-xs font-bold text-white">
+                        {s.step}
+                      </div>
+                      {i < steps.length - 1 && <div className="mt-2 h-full w-px bg-white/15" />}
+                    </div>
+                    <div className="pb-2">
+                      <h3 className="text-sm font-semibold text-white">{s.title}</h3>
+                      <p className="mt-1 text-xs leading-relaxed text-white/50">{s.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+
+              <div className="mt-8 flex justify-center sm:mt-10">
+                <a
+                  href={`https://wa.me/916282477940?text=${encodeURIComponent("Hi! I'd like to book a houseboat experience. Please share availability.")}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-gray-900 transition-colors hover:bg-gray-100"
+                >
+                  Start Booking
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Gallery */}
       <section className="py-10 sm:py-14">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -409,46 +468,6 @@ export default function Home() {
                 />
               </div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* How It Works */}
-      <section id="how-it-works" className="py-16 sm:py-24">
-        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-          <div className="overflow-hidden rounded-3xl bg-ocean-900">
-            <div className="px-6 py-10 sm:px-12 sm:py-14">
-              <h2 className="text-center text-2xl font-bold text-white sm:text-3xl">
-                How It Works
-              </h2>
-
-              <div className="mt-10 grid gap-6 sm:grid-cols-3 sm:gap-0">
-                {steps.map((s, i) => (
-                  <div key={s.step} className={`relative flex flex-col items-center text-center ${i < steps.length - 1 ? "sm:border-r sm:border-white/10" : ""}`}>
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full border-2 border-ocean-400 text-sm font-bold text-ocean-400">
-                      {s.step}
-                    </div>
-                    <h3 className="mt-4 text-base font-semibold text-white">
-                      {s.title}
-                    </h3>
-                    <p className="mt-1.5 max-w-[220px] text-sm leading-relaxed text-white/50">
-                      {s.description}
-                    </p>
-                  </div>
-                ))}
-              </div>
-
-              <div className="mt-10 flex justify-center">
-                <a
-                  href={`https://wa.me/916282477940?text=${encodeURIComponent("Hi! I'd like to book a houseboat experience. Please share availability.")}`}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="rounded-full bg-white px-8 py-3 text-sm font-semibold text-ocean-900 transition-colors hover:bg-ocean-50"
-                >
-                  Start Booking
-                </a>
-              </div>
-            </div>
           </div>
         </div>
       </section>

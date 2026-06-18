@@ -196,57 +196,6 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Booking bar — mobile only, below image */}
-          <div className="mt-4 flex flex-col gap-3 rounded-2xl bg-white p-4 shadow-lg ring-1 ring-gray-100 sm:hidden">
-            <div>
-              <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
-                <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5" />
-                </svg>
-                Travel Dates
-              </label>
-              <input
-                type="date"
-                className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400"
-              />
-            </div>
-            <div className="grid grid-cols-2 gap-3">
-              <div>
-                <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
-                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0" />
-                  </svg>
-                  Travelers
-                </label>
-                <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
-                  <option>2 Person</option>
-                  <option>3 Person</option>
-                  <option>4 Person</option>
-                  <option>5+ Person</option>
-                </select>
-              </div>
-              <div>
-                <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">
-                  <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M15 10.5a3 3 0 1 1-6 0 3 3 0 0 1 6 0Z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1 1 15 0Z" />
-                  </svg>
-                  Experience
-                </label>
-                <select className="w-full appearance-none rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400">
-                  <option>All Experiences</option>
-                  <option>Day Cruise</option>
-                  <option>Overnight Stay</option>
-                </select>
-              </div>
-            </div>
-            <a
-              href="#sharing"
-              className="rounded-xl bg-ocean-600 py-3 text-center text-sm font-semibold text-white transition-colors hover:bg-ocean-700"
-            >
-              Check Availability
-            </a>
-          </div>
         </div>
       </section>
 
@@ -539,7 +488,7 @@ export default function Home() {
           </div>
 
           {/* Review cards */}
-          <div className="mt-8 grid gap-4 sm:grid-cols-3">
+          <div className="mt-8 flex gap-3 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
             {[
               {
                 name: "Priya & Arjun",
@@ -562,38 +511,30 @@ export default function Home() {
             ].map((review) => (
               <div
                 key={review.name}
-                className="flex flex-col rounded-2xl bg-white p-5 shadow-sm ring-1 ring-gray-100 sm:p-6"
+                className="flex w-64 shrink-0 flex-col rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-100 sm:w-auto sm:shrink sm:rounded-2xl sm:p-6"
               >
-                <div className="flex items-start justify-between">
-                  <div className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-ocean-100 text-sm font-bold text-ocean-700">
-                      {review.name[0]}
-                    </div>
-                    <div>
-                      <p className="text-sm font-semibold text-gray-900">{review.name}</p>
-                      <p className="text-xs text-gray-400">{review.location}</p>
-                    </div>
+                <div className="flex items-center gap-2.5">
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ocean-100 text-xs font-bold text-ocean-700 sm:h-10 sm:w-10 sm:text-sm">
+                    {review.name[0]}
                   </div>
-                  <svg className="h-5 w-5 shrink-0" viewBox="0 0 24 24">
-                    <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92a5.06 5.06 0 0 1-2.2 3.32v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.1z" fill="#4285F4" />
-                    <path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853" />
-                    <path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05" />
-                    <path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335" />
-                  </svg>
+                  <div>
+                    <p className="text-xs font-semibold text-gray-900 sm:text-sm">{review.name}</p>
+                    <p className="text-[11px] text-gray-400 sm:text-xs">{review.location}</p>
+                  </div>
                 </div>
 
-                <div className="mt-3 flex items-center gap-2">
+                <div className="mt-2 flex items-center gap-2">
                   <div className="flex gap-0.5 text-amber-400">
                     {Array.from({ length: 5 }).map((_, i) => (
-                      <svg key={i} className="h-3.5 w-3.5 fill-current" viewBox="0 0 20 20">
+                      <svg key={i} className="h-3 w-3 fill-current sm:h-3.5 sm:w-3.5" viewBox="0 0 20 20">
                         <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 0 0 .95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 0 0-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 0 0-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 0 0-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 0 0 .951-.69l1.07-3.292Z" />
                       </svg>
                     ))}
                   </div>
-                  <span className="text-xs text-gray-300">{review.time}</span>
+                  <span className="text-[11px] text-gray-300 sm:text-xs">{review.time}</span>
                 </div>
 
-                <p className="mt-3 flex-1 text-sm leading-relaxed text-gray-500">
+                <p className="mt-2 flex-1 text-xs leading-relaxed text-gray-500 sm:mt-3 sm:text-sm">
                   {review.text}
                 </p>
               </div>

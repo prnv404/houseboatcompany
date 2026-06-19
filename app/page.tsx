@@ -33,24 +33,24 @@ const vessels = [
 ];
 
 const queenGallery = [
-  { src: "/houseboat/exterior-water.jpg", alt: "Houseboat cruising the backwaters" },
-  { src: "/houseboat/lounge-1.jpg", alt: "Lounge area with ornate ceiling" },
-  { src: "/houseboat/bedroom-1.jpg", alt: "Luxury bedroom with ambient lighting" },
-  { src: "/houseboat/deck-1.jpg", alt: "Rooftop deck with backwater views" },
-  { src: "/houseboat/stairs.jpg", alt: "LED-lit staircase with water view" },
-  { src: "/houseboat/bedroom-4.jpg", alt: "Bedroom with wooden lattice design" },
-  { src: "/houseboat/lounge-2.jpg", alt: "Lounge with spiral ceiling" },
-  { src: "/houseboat/bedroom-2.jpg", alt: "Bedroom with diamond wall panels" },
-  { src: "/houseboat/bedroom-3.jpg", alt: "Bedroom with circular design" },
-  { src: "/houseboat/deck-2.jpg", alt: "Deck with greenery view" },
-  { src: "/houseboat/dining.jpg", alt: "Dining area with panoramic windows" },
-  { src: "/houseboat/exterior-dock.jpg", alt: "Houseboat docked at the jetty" },
-  { src: "/houseboat/deck-aerial.jpg", alt: "Rooftop deck aerial view" },
-  { src: "/houseboat/dining-wide.jpg", alt: "Dining hall with ornate ceiling" },
-  { src: "/houseboat/lounge-3.jpg", alt: "Lounge with backwater views" },
-  { src: "/houseboat/bedroom-5.jpg", alt: "Marble accent bedroom" },
-  { src: "/houseboat/bedroom-6.jpg", alt: "Bedroom with warm golden lighting" },
-  { src: "/houseboat/bedroom-7.jpg", alt: "Bedroom with decorative headboard" },
+  { src: "/houseboat/14-bed/carrebian.jpeg", alt: "Houseboat cruising the backwaters" },
+  { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg", alt: "1 bedroom houseboat interior" },
+  { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.53%20PM.jpeg", alt: "1 bedroom houseboat view" },
+  { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.54%20PM.jpeg", alt: "1 bedroom houseboat cabin" },
+  { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.55%20PM.jpeg", alt: "1 bedroom houseboat deck" },
+  { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.56%20PM.jpeg", alt: "1 bedroom houseboat lounge" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg", alt: "8 bedroom houseboat exterior" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.02%20AM.jpeg", alt: "8 bedroom houseboat lounge" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.03%20AM.jpeg", alt: "8 bedroom houseboat dining" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM.jpeg", alt: "8 bedroom houseboat bedroom" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM.jpeg", alt: "8 bedroom houseboat deck" },
+  { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.06%20AM.jpeg", alt: "8 bedroom houseboat sundeck" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.11%20PM.jpeg", alt: "14 bedroom houseboat exterior" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.13%20PM.jpeg", alt: "14 bedroom houseboat lounge" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM.jpeg", alt: "14 bedroom houseboat bedroom" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.17%20PM.jpeg", alt: "14 bedroom houseboat dining" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.19%20PM.jpeg", alt: "14 bedroom houseboat deck" },
+  { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.21%20PM.jpeg", alt: "14 bedroom houseboat sundeck" },
 ];
 
 const steps = [
@@ -77,10 +77,10 @@ const experiences = [
     slug: "day-cruise",
     badge: "Most Booked",
     badgeColor: "bg-ocean-600",
-    duration: "8 hours",
+    duration: "1 Day",
     capacity: "Up to 15 guests",
     price: "₹5,000",
-    image: "/houseboat/lounge-2.jpg",
+    image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg",
     description:
       "Private cabin on a shared deluxe houseboat. Cruise through Punnamada & Vembanad Lake with a Kerala lunch, tea, and snacks — all included.",
     includes: ["Kerala lunch", "Welcome drinks", "Personal chef", "3-member crew"],
@@ -90,10 +90,10 @@ const experiences = [
     slug: "overnight-stay",
     badge: "Best Experience",
     badgeColor: "bg-ocean-900",
-    duration: "22 hours",
+    duration: "2 Days & 1 Night",
     capacity: "Up to 10 guests",
     price: "₹5,000",
-    image: "/houseboat/bedroom-1.jpg",
+    image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg",
     description:
       "Private cabin with AC (9 PM–6 AM). Check-in 1:30 PM, check-out 8:30 AM. All 4 meals included — lunch, snacks, dinner & breakfast.",
     includes: ["4 meals included", "AC cabin", "Personal chef", "22-hour cruise"],
@@ -112,7 +112,7 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-3xl">
             <div className="relative aspect-[3/4] sm:aspect-[2/1]">
               <Image
-                src="/houseboat/carrebian/carrebian.jpeg"
+                src="/houseboat/14-bed/carrebian.jpeg"
                 alt="Royal Caribbean houseboat on the backwaters"
                 fill
                 priority
@@ -248,7 +248,7 @@ export default function Home() {
                 <div className="mt-3 sm:mt-4">
                   <h3 className="text-sm font-semibold text-gray-900 sm:text-base">{card.name}</h3>
                   <p className="mt-0.5 text-xs text-gray-400 sm:text-sm">
-                    {card.duration} · {card.capacity}
+                    {card.duration}
                   </p>
                   <p className="mt-1 text-sm font-bold text-gray-900 sm:text-base">
                     From <span>{card.price}</span>
@@ -566,7 +566,7 @@ export default function Home() {
       <section id="book" className="px-4 pb-16 sm:px-6 lg:px-8">
         <div className="relative mx-auto max-w-5xl overflow-hidden rounded-3xl px-6 py-16 text-center sm:px-16 sm:py-20">
           <Image
-            src="/houseboat/exterior-water.jpg"
+            src="/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.12%20PM.jpeg"
             alt="Houseboat on backwaters"
             fill
             className="object-cover"

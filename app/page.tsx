@@ -302,19 +302,19 @@ export default function Home() {
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
             {[
               { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg" },
-              { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.53%20PM.jpeg" },
-              { beds: 3, guests: "6–12", price: "₹16,000", image: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.54%20PM.jpeg" },
-              { beds: 4, guests: "8–16", price: "₹22,000", image: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.55%20PM.jpeg" },
-              { beds: 5, guests: "10–20", price: "₹28,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
-              { beds: 6, guests: "12–24", price: "₹34,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.02%20AM.jpeg" },
-              { beds: 7, guests: "14–28", price: "₹40,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.03%20AM.jpeg" },
-              { beds: 8, guests: "16–32", price: "₹46,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM.jpeg" },
-              { beds: 9, guests: "18–36", price: "₹52,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM.jpeg" },
-              { beds: 10, guests: "20–40", price: "₹58,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.11%20PM.jpeg" },
-              { beds: 11, guests: "22–44", price: "₹64,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.13%20PM.jpeg" },
-              { beds: 12, guests: "24–48", price: "₹70,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM.jpeg" },
-              { beds: 13, guests: "26–52", price: "₹76,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.17%20PM.jpeg" },
-              { beds: 14, guests: "28–56", price: "₹82,000", image: "/houseboat/14-bed/carrebian.jpeg" },
+              { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
+              { beds: 3, guests: "6–12", price: "₹16,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg" },
+              { beds: 4, guests: "8–16", price: "₹22,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM%20(1).jpeg" },
+              { beds: 5, guests: "10–20", price: "₹28,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.06%20AM.jpeg" },
+              { beds: 6, guests: "12–24", price: "₹34,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.09%20AM.jpeg" },
+              { beds: 7, guests: "14–28", price: "₹40,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.14%20PM.jpeg" },
+              { beds: 8, guests: "16–32", price: "₹46,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM%20(1).jpeg" },
+              { beds: 9, guests: "18–36", price: "₹52,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg" },
+              { beds: 10, guests: "20–40", price: "₹58,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.25%20PM%20(1).jpeg" },
+              { beds: 11, guests: "22–44", price: "₹64,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.27%20PM%20(1).jpeg" },
+              { beds: 12, guests: "24–48", price: "₹70,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.28%20PM%20(1).jpeg" },
+              { beds: 13, guests: "26–52", price: "₹76,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM.jpeg" },
+              { beds: 14, guests: "28–56", price: "₹82,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM%20(1).jpeg" },
             ].map((boat) => (
               <a
                 key={boat.beds}

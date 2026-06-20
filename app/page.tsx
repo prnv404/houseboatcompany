@@ -301,7 +301,7 @@ export default function Home() {
 
           <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
             {[
-              { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg" },
+              { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/1-bed/exterior.jpeg", objectPosition: "center 40%" },
               { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
               { beds: 3, guests: "6–12", price: "₹16,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg" },
               { beds: 4, guests: "8–16", price: "₹22,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM%20(1).jpeg" },
@@ -330,6 +330,7 @@ export default function Home() {
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
                     sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 14vw"
+                    style={boat.objectPosition ? { objectPosition: boat.objectPosition } : undefined}
                   />
                 </div>
                 <div className="mt-2">

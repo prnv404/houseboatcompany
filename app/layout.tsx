@@ -36,6 +36,12 @@ export default function RootLayout({
             gtag('config', 'AW-18106309279');
           `}
         </Script>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="3f794072-b47d-429b-81df-619859e35d50"
+          strategy="afterInteractive"
+        />
       </head>
       <body className="min-h-full flex flex-col font-sans">
         <Header />

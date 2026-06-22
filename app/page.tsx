@@ -216,10 +216,10 @@ export default function Home() {
           {/* Header */}
           <div className="text-center">
             <h2 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl lg:text-4xl">
-              Luxury Houseboat. Budget-Friendly Price.
+              Just Book a Room, Not the Entire Boat.
             </h2>
             <p className="mx-auto mt-3 hidden max-w-lg text-sm leading-relaxed text-gray-400 sm:block">
-              Starting at ₹5,000 for two — share a deluxe houseboat and cruise the backwaters together.
+              Starting at ₹5,000 for two — book your private cabin on a shared houseboat and cruise the backwaters together.
             </p>
           </div>
 

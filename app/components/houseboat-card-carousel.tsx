@@ -50,7 +50,7 @@ export default function HouseboatCardCarousel({ images, alt }: HouseboatCardCaro
 
   return (
     <div
-      className="relative aspect-[4/3] overflow-hidden rounded-xl group/carousel"
+      className="relative aspect-square sm:aspect-[4/3] overflow-hidden rounded-xl group/carousel"
       onTouchStart={handleTouchStart}
       onTouchEnd={handleTouchEnd}
     >

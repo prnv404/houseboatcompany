@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import FloatingButtons from "./components/floating-buttons";
 import HouseboatCardCarousel from "./components/houseboat-card-carousel";
+import HeroDatePicker from "./components/hero-date-picker";
 
 const vessels = [
   {
@@ -125,7 +126,7 @@ export default function Home() {
           <div className="relative overflow-hidden rounded-3xl">
             <div className="relative aspect-[3/4] sm:aspect-[2/1]">
               <Image
-                src="/houseboat/14-bed/carrebian.jpeg"
+                src="/houseboat/14-bed/exterior.jpeg"
                 alt="Royal Caribbean houseboat on the backwaters"
                 fill
                 priority
@@ -166,10 +167,7 @@ export default function Home() {
                     </svg>
                     Travel Dates
                   </label>
-                  <input
-                    type="date"
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50 px-4 py-2.5 text-sm text-gray-700 outline-none focus:border-ocean-400 focus:ring-1 focus:ring-ocean-400"
-                  />
+                  <HeroDatePicker />
                 </div>
                 <div className="flex-1">
                   <label className="mb-1.5 flex items-center gap-1.5 text-xs font-medium text-gray-500">

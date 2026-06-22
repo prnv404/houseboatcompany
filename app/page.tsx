@@ -352,11 +352,11 @@ export default function Home() {
                 { src: "/houseboat/6-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.07%20AM.jpeg" },
               ]},
               { beds: 7, guests: "14–28", price: "₹40,000", images: [
-                { src: "/houseboat/8-bed/exterior.jpeg", objectPosition: "center 40%" },
-                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
-                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.02%20AM.jpeg" },
-                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.03%20AM.jpeg" },
-                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM.jpeg" },
+                { src: "/houseboat/7-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/7-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.31%20AM.jpeg" },
+                { src: "/houseboat/7-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.32%20AM.jpeg" },
+                { src: "/houseboat/7-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.33%20AM.jpeg" },
+                { src: "/houseboat/7-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.34%20AM.jpeg" },
               ]},
               { beds: 8, guests: "16–32", price: "₹46,000", images: [
                 { src: "/houseboat/8-bed/exterior.jpeg", objectPosition: "center 40%" },

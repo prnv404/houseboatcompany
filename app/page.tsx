@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import FloatingButtons from "./components/floating-buttons";
+import HouseboatCardCarousel from "./components/houseboat-card-carousel";
 
 const vessels = [
   {
@@ -80,7 +81,13 @@ const experiences = [
     duration: "1 Day",
     capacity: "Up to 15 guests",
     price: "₹5,000",
-    image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg",
+    images: [
+      { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg" },
+      { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
+      { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.03%20AM.jpeg" },
+      { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM.jpeg" },
+      { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.08%20AM.jpeg" },
+    ],
     description:
       "Private cabin on a shared deluxe houseboat. Cruise through Punnamada & Vembanad Lake with a Kerala lunch, tea, and snacks — all included.",
     includes: ["Kerala lunch", "Welcome drinks", "Personal chef", "3-member crew"],
@@ -93,7 +100,13 @@ const experiences = [
     duration: "2 Days & 1 Night",
     capacity: "Up to 10 guests",
     price: "₹5,000",
-    image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg",
+    images: [
+      { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg" },
+      { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM.jpeg" },
+      { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.17%20PM.jpeg" },
+      { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.19%20PM.jpeg" },
+      { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.21%20PM.jpeg" },
+    ],
     description:
       "Private cabin with AC (9 PM–6 AM). Check-in 1:30 PM, check-out 8:30 AM. All 4 meals included — lunch, snacks, dinner & breakfast.",
     includes: ["4 meals included", "AC cabin", "Personal chef", "22-hour cruise"],
@@ -234,13 +247,10 @@ export default function Home() {
             {experiences.map((card) => (
               <div key={card.name} className="group">
                 {/* Image */}
-                <Link href={`/experiences/${card.slug}`} className="relative block aspect-square overflow-hidden rounded-2xl">
-                  <Image
-                    src={card.image}
+                <Link href={`/experiences/${card.slug}`} className="block">
+                  <HouseboatCardCarousel
+                    images={card.images}
                     alt={card.name}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, 50vw"
                   />
                 </Link>
 
@@ -267,7 +277,7 @@ export default function Home() {
                     </a>
                     <a
                       href={`https://wa.me/916282477940?text=${encodeURIComponent(
-                        `Hi! I'd like to book the ${card.name} (${card.price} for 2 persons). Please share availability.`,
+                        `Hi! I'd like to book a shared houseboat — ${card.name} (${card.duration}). Please share availability and details.`,
                       )}`}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -299,40 +309,118 @@ export default function Home() {
             </p>
           </div>
 
-          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4 lg:grid-cols-7">
+          <div className="mt-8 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-4">
             {[
-              { beds: 1, guests: "2–4", price: "₹8,000", image: "/houseboat/1-bed/exterior.jpeg", objectPosition: "center 40%" },
-              { beds: 2, guests: "4–8", price: "₹12,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
-              { beds: 3, guests: "6–12", price: "₹16,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg" },
-              { beds: 4, guests: "8–16", price: "₹22,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM%20(1).jpeg" },
-              { beds: 5, guests: "10–20", price: "₹28,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.06%20AM.jpeg" },
-              { beds: 6, guests: "12–24", price: "₹34,000", image: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.09%20AM.jpeg" },
-              { beds: 7, guests: "14–28", price: "₹40,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.14%20PM.jpeg" },
-              { beds: 8, guests: "16–32", price: "₹46,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM%20(1).jpeg" },
-              { beds: 9, guests: "18–36", price: "₹52,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg" },
-              { beds: 10, guests: "20–40", price: "₹58,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.25%20PM%20(1).jpeg" },
-              { beds: 11, guests: "22–44", price: "₹64,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.27%20PM%20(1).jpeg" },
-              { beds: 12, guests: "24–48", price: "₹70,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.28%20PM%20(1).jpeg" },
-              { beds: 13, guests: "26–52", price: "₹76,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM.jpeg" },
-              { beds: 14, guests: "28–56", price: "₹82,000", image: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM%20(1).jpeg" },
+              { beds: 1, guests: "2–4", price: "₹8,000", images: [
+                { src: "/houseboat/1-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg" },
+                { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.53%20PM.jpeg" },
+                { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.54%20PM.jpeg" },
+                { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.55%20PM.jpeg" },
+              ]},
+              { beds: 2, guests: "4–8", price: "₹12,000", images: [
+                { src: "/houseboat/2-bed/exterior.jpeg", objectPosition: "center 35%" },
+                { src: "/houseboat/2-bed/WhatsApp%20Image%202026-06-20%20at%2010.24.03%20AM.jpeg" },
+                { src: "/houseboat/2-bed/WhatsApp%20Image%202026-06-20%20at%2010.24.04%20AM%20(1).jpeg" },
+                { src: "/houseboat/2-bed/WhatsApp%20Image%202026-06-20%20at%2010.24.05%20AM.jpeg" },
+                { src: "/houseboat/2-bed/WhatsApp%20Image%202026-06-20%20at%2010.24.06%20AM.jpeg" },
+              ]},
+              { beds: 3, guests: "6–12", price: "₹16,000", images: [
+                { src: "/houseboat/3-bed/exterior.jpeg" },
+                { src: "/houseboat/3-bed/WhatsApp%20Image%202026-06-20%20at%2010.21.52%20AM.jpeg" },
+                { src: "/houseboat/3-bed/WhatsApp%20Image%202026-06-20%20at%2010.21.53%20AM.jpeg" },
+                { src: "/houseboat/3-bed/WhatsApp%20Image%202026-06-20%20at%2010.21.54%20AM.jpeg" },
+                { src: "/houseboat/3-bed/WhatsApp%20Image%202026-06-20%20at%2010.32.08%20AM.jpeg" },
+              ]},
+              { beds: 4, guests: "8–16", price: "₹22,000", images: [
+                { src: "/houseboat/4-bed/exterior.jpeg" },
+                { src: "/houseboat/4-bed/WhatsApp%20Image%202026-06-20%20at%2010.15.32%20AM.jpeg" },
+                { src: "/houseboat/4-bed/WhatsApp%20Image%202026-06-20%20at%2010.15.33%20AM.jpeg" },
+                { src: "/houseboat/4-bed/WhatsApp%20Image%202026-06-20%20at%2010.15.34%20AM.jpeg" },
+                { src: "/houseboat/4-bed/WhatsApp%20Image%202026-06-20%20at%2010.15.35%20AM.jpeg" },
+              ]},
+              { beds: 5, guests: "10–20", price: "₹28,000", images: [
+                { src: "/houseboat/5-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/5-bed/WhatsApp%20Image%202026-06-20%20at%2010.16.41%20AM.jpeg" },
+                { src: "/houseboat/5-bed/WhatsApp%20Image%202026-06-20%20at%2010.16.41%20AM%20(1).jpeg" },
+                { src: "/houseboat/5-bed/WhatsApp%20Image%202026-06-20%20at%2010.16.42%20AM.jpeg" },
+                { src: "/houseboat/5-bed/WhatsApp%20Image%202026-06-20%20at%2010.16.43%20AM.jpeg" },
+              ]},
+              { beds: 6, guests: "12–24", price: "₹34,000", images: [
+                { src: "/houseboat/6-bed/exterior.jpeg" },
+                { src: "/houseboat/6-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.04%20AM%20(1).jpeg" },
+                { src: "/houseboat/6-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.05%20AM.jpeg" },
+                { src: "/houseboat/6-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.06%20AM.jpeg" },
+                { src: "/houseboat/6-bed/WhatsApp%20Image%202026-06-20%20at%2010.18.07%20AM.jpeg" },
+              ]},
+              { beds: 7, guests: "14–28", price: "₹40,000", images: [
+                { src: "/houseboat/8-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.01%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.02%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.03%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM.jpeg" },
+              ]},
+              { beds: 8, guests: "16–32", price: "₹46,000", images: [
+                { src: "/houseboat/8-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.05%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.06%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.07%20AM.jpeg" },
+                { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.08%20AM.jpeg" },
+              ]},
+              { beds: 9, guests: "18–36", price: "₹52,000", images: [
+                { src: "/houseboat/10-bed/exterior.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.17%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.18%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.19%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.20%20AM.jpeg" },
+              ]},
+              { beds: 10, guests: "20–40", price: "₹58,000", images: [
+                { src: "/houseboat/10-bed/exterior.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.21%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.22%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.23%20AM.jpeg" },
+                { src: "/houseboat/10-bed/WhatsApp%20Image%202026-06-22%20at%2010.48.23%20AM%20(1).jpeg" },
+              ]},
+              { beds: 11, guests: "22–44", price: "₹64,000", images: [
+                { src: "/houseboat/14-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.11%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.12%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.13%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.14%20PM.jpeg" },
+              ]},
+              { beds: 12, guests: "24–48", price: "₹70,000", images: [
+                { src: "/houseboat/14-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.15%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.16%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.17%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.18%20PM.jpeg" },
+              ]},
+              { beds: 13, guests: "26–52", price: "₹76,000", images: [
+                { src: "/houseboat/14-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.19%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.20%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.21%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.22%20PM.jpeg" },
+              ]},
+              { beds: 14, guests: "28–56", price: "₹82,000", images: [
+                { src: "/houseboat/14-bed/exterior.jpeg", objectPosition: "center 40%" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.23%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.25%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.27%20PM.jpeg" },
+                { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM.jpeg" },
+              ]},
             ].map((boat) => (
               <a
                 key={boat.beds}
-                href={`https://wa.me/916282477940?text=${encodeURIComponent(`Hi! I'm interested in a ${boat.beds} bedroom private houseboat (from ${boat.price}). Please share availability.`)}`}
+                href={`https://wa.me/916282477940?text=${encodeURIComponent(`Hi! I'd like to book a private houseboat with ${boat.beds} bedroom${boat.beds > 1 ? "s" : ""}. Please share availability and details.`)}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group"
               >
-                <div className="relative aspect-[3/4] overflow-hidden rounded-xl">
-                  <Image
-                    src={boat.image}
-                    alt={`${boat.beds} bedroom houseboat`}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 33vw, (max-width: 1024px) 25vw, 14vw"
-                    style={boat.objectPosition ? { objectPosition: boat.objectPosition } : undefined}
-                  />
-                </div>
+                <HouseboatCardCarousel
+                  images={boat.images}
+                  alt={`${boat.beds} bedroom houseboat`}
+                />
                 <div className="mt-2">
                   <h3 className="text-xs font-semibold text-gray-900 sm:text-sm">{boat.beds} Bedroom</h3>
                   <p className="text-[11px] text-gray-400">{boat.guests} guests</p>

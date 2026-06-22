@@ -35,7 +35,7 @@ const vessels = [
 ];
 
 const queenGallery = [
-  { src: "/houseboat/14-bed/carrebian.jpeg", alt: "Houseboat cruising the backwaters" },
+  { src: "/houseboat/14-bed/exterior.jpeg", alt: "Houseboat cruising the backwaters" },
   { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg", alt: "1 bedroom houseboat interior" },
   { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.53%20PM.jpeg", alt: "1 bedroom houseboat view" },
   { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.54%20PM.jpeg", alt: "1 bedroom houseboat cabin" },

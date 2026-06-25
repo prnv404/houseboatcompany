@@ -8,7 +8,6 @@ export function houseboatSlug(beds: number): string {
   return `${beds}-bedroom`;
 }
 
-// Shared across every private houseboat — written once, applied to all sizes.
 export const PRIVATE_HIGHLIGHTS: string[] = [
   "The entire houseboat, exclusively for your group",
   "Air-conditioned bedrooms, each with an attached bathroom",
@@ -19,22 +18,42 @@ export const PRIVATE_HIGHLIGHTS: string[] = [
 ];
 
 export const PRIVATE_INCLUDED: string[] = [
-  "Full Kerala lunch, evening snacks, dinner & breakfast",
   "Welcome drinks on arrival",
+  "Full Kerala lunch, evening snacks, dinner & breakfast",
   "Air-conditioned bedrooms (9 PM – 6 AM)",
-  "Personal chef & experienced crew",
+  "Personal chef & experienced 3-member crew",
   "Private cabins with attached bathrooms",
   "Living lounge, dining area & open sundeck",
+  "Music system onboard",
+  "Children below 5 yrs complimentary",
 ];
 
 export const PRIVATE_POLICIES: string[] = [
-  "Check-in 12:00 PM – 2:00 PM · Check-out 9:00 AM the next day.",
-  "AC runs 9 PM – 6 AM in bedrooms. Full-time AC available on request for an extra charge.",
-  "Children below 5 years stay complimentary when sharing with parents.",
-  "After sunset the boat anchors near a village and stays moored overnight.",
-  "Price is per night for the whole boat. Custom routes and extra nights on request.",
-  "Payment is made at check-in — nothing to pay online now.",
+  "Check-in 11:45 AM · Check-out 8:30 AM the next day.",
+  "AC runs 9 PM – 6 AM in bedrooms. Full-time AC available on request at additional cost.",
+  "Children below 5 years stay complimentary when sharing with parents. Above 5 years charged as extra person.",
+  "The boat is exclusively yours — complete privacy for your group.",
+  "After 5:30 PM the boat halts near a village area for the night.",
+  "Lunch break is 2 hours — boat will be anchored.",
+  "Extra food or menu changes must be informed at least 1 day prior.",
+  "Payments are prepaid — full amount to be paid at check-in.",
+  "Management is not responsible for late arrivals. Check-out time is strictly followed.",
 ];
+
+export interface MenuItem {
+  meal: string;
+  items: string;
+}
+
+export const PRIVATE_MENU: MenuItem[] = [
+  { meal: "Welcome Drink", items: "Soft drinks (lemon or Tang)" },
+  { meal: "Lunch", items: "Rice, Karimeen Fish Fry, Sambar, Curd/Pullissery/Rasam, Cabbage Thoran, Long Beans Fry (Payar Mezhukku), Pappad, Pickle, Salad" },
+  { meal: "Evening", items: "Tea/Coffee with Pazhampori (banana fritters)" },
+  { meal: "Dinner", items: "Rice, Chapathi, Chicken Curry, Dal Curry, Vendakka Mezhukku (Okra Fry)" },
+  { meal: "Breakfast", items: "Idly, Sambar, Chutney, Tea/Coffee with Sliced Pineapple" },
+];
+
+export const PRIVATE_ROUTE = "Starting from Alleppey → Punnamada Lake → Vembanad Lake → R Block & C Block (man-made paddy fields below sea level) → Rani → Chithira → Marthandam → Kainakari → Dock at Kuppapuram (evening). Next day: Kuppapuram → Meenapally Kayal → Pallathuruthy → Return to Alleppey.";
 
 export interface HouseboatFact {
   label: string;
@@ -62,7 +81,7 @@ function buildDetail(boat: PrivateBoat): HouseboatDetail {
     name: `${beds} Bedroom Private Houseboat`,
     tagline: "The whole boat — just for your group",
     description: `Charter the entire ${beds}-bedroom houseboat for your group of ${guests} guests. Total privacy across ${beds} air-conditioned ${bedWord}, each with its own attached bathroom, plus a living lounge, dining area, and open sundeck — all exclusively yours as you cruise the Alleppey backwaters.`,
-    longDescription: `Booking the whole boat means the lounge, the dining table, the sundeck, and the kitchen are yours alone — perfect for families, friends, and celebrations. Check in around midday at the Alleppey jetty, settle into your ${bedWord}, and cruise through Punnamada Lake and the village canals as a personal chef prepares authentic Kerala meals onboard. After sunset the boat moors near a quiet village for the night, and you wake to a misty sunrise cruise back to Alleppey. A ${beds}-bedroom boat comfortably hosts ${guests} guests with room to spread out.`,
+    longDescription: `Booking the whole boat means the lounge, the dining table, the sundeck, and the kitchen are yours alone — perfect for families, friends, and celebrations. Check in at 11:45 AM at the Alleppey jetty, settle into your ${bedWord}, and cruise through Punnamada Lake, Vembanad Lake, and the village canals as a personal chef prepares authentic Kerala meals onboard. After 5:30 PM the boat moors near a quiet village for the night, and you wake to a sunrise cruise through Meenapally Kayal and Pallathuruthy back to Alleppey by 8:30 AM. A ${beds}-bedroom boat comfortably hosts ${guests} guests with room to spread out.`,
     bathrooms: beds,
     layout: [
       `${beds} air-conditioned ${bedWord}`,
@@ -70,12 +89,13 @@ function buildDetail(boat: PrivateBoat): HouseboatDetail {
       "Living & dining lounge",
       "Open-air sundeck",
       "Onboard kitchen with personal chef",
+      "Music system",
     ],
     facts: [
       { label: "Bedrooms", value: String(beds) },
       { label: "Guests", value: guests },
-      { label: "Bathrooms", value: String(beds) },
-      { label: "Rating", value: "5.0 / 5" },
+      { label: "Check-in", value: "11:45 AM" },
+      { label: "Check-out", value: "8:30 AM" },
     ],
   };
 }

@@ -12,7 +12,9 @@ import {
   houseboatSlugs,
   PRIVATE_HIGHLIGHTS,
   PRIVATE_INCLUDED,
+  PRIVATE_MENU,
   PRIVATE_POLICIES,
+  PRIVATE_ROUTE,
 } from "../../data/private-houseboats";
 
 export function generateStaticParams() {
@@ -135,6 +137,34 @@ export default async function HouseboatPage({
                         <CheckIcon className="h-3.5 w-3.5 text-ocean-700" />
                       </span>
                       <span className="text-[15px] leading-relaxed text-gray-700">{h}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Route */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ocean-600">The journey</p>
+                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">Cruise route</h2>
+                <ol className="mt-5 ml-1 border-l-2 border-dashed border-ocean-200">
+                  {PRIVATE_ROUTE.split("→").map((s) => s.trim()).filter(Boolean).map((stop, i) => (
+                    <li key={`${stop}-${i}`} className="relative pb-5 pl-6 last:pb-0">
+                      <span className="absolute -left-[7px] top-1 h-3 w-3 rounded-full border-2 border-ocean-500 bg-white" />
+                      <p className="text-sm leading-relaxed text-gray-700">{stop}</p>
+                    </li>
+                  ))}
+                </ol>
+              </div>
+
+              {/* Menu */}
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ocean-600">Dining</p>
+                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">What&apos;s on the menu</h2>
+                <div className="mt-5 divide-y divide-gray-100 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm">
+                  {PRIVATE_MENU.map((m) => (
+                    <div key={m.meal} className="flex flex-col gap-1 p-4 sm:flex-row sm:gap-6 sm:p-5">
+                      <p className="shrink-0 text-sm font-semibold text-gray-900 sm:w-32">{m.meal}</p>
+                      <p className="text-sm leading-relaxed text-gray-500">{m.items}</p>
                     </div>
                   ))}
                 </div>

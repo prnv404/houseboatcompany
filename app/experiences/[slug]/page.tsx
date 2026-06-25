@@ -6,7 +6,7 @@ import HouseboatGallery from "../../components/houseboat-gallery";
 import { CheckIcon, PhoneIcon, StarIcon, WhatsAppIcon } from "../../components/icons";
 import { PHONE_NUMBER, whatsappLink } from "../../lib/contact";
 
-interface MealItem {
+interface MenuItem {
   meal: string;
   items: string;
 }
@@ -17,18 +17,17 @@ interface Experience {
   duration: string;
   capacity: string;
   price: string;
+  priceUnit: string;
   images: { src: string; objectPosition?: string }[];
   description: string;
   longDescription: string;
   includes: string[];
   highlights: string[];
-  type: "shared" | "vessel";
-  checkIn?: string;
-  checkOut?: string;
-  route?: string;
-  menu?: MealItem[];
-  policies?: string[];
   layout: string[];
+  menu: MenuItem[];
+  route: string;
+  policies: string[];
+  facts: { label: string; value: string }[];
 }
 
 const experiences: Record<string, Experience> = {
@@ -37,8 +36,8 @@ const experiences: Record<string, Experience> = {
     tagline: "The perfect introduction to the backwaters",
     duration: "8 hours",
     capacity: "Up to 15 guests",
-    price: "₹5,000/person",
-    type: "shared",
+    price: "₹5,000",
+    priceUnit: "person",
     images: [
       { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.04%20AM%20(1).jpeg" },
       { src: "/houseboat/8-bed/WhatsApp%20Image%202026-06-18%20at%2010.30.07%20AM.jpeg" },
@@ -57,7 +56,8 @@ const experiences: Record<string, Experience> = {
       "Afternoon tea/coffee with pazhampori",
       "Shared luxury lounge & sundeck",
       "Personal chef on board",
-      "Experienced 3-member crew",
+      "Experienced 3-member crew (Captain, Cook, Engine Driver)",
+      "Music system onboard",
     ],
     highlights: [
       "Cruise through Punnamada & Vembanad Lake",
@@ -79,16 +79,29 @@ const experiences: Record<string, Experience> = {
       { meal: "Lunch", items: "Rice, Karimeen Fish Fry, Sambar, Curd/Pullissery/Rasam, Cabbage Thoran, Long Beans Fry (Payar Mezhukku), Pappad, Pickle, Salad" },
       { meal: "Evening", items: "Tea/Coffee with Pazhampori (banana fritters)" },
     ],
+    route: "Starting from Alleppey → Punnamada Lake → Vembanad Lake → R Block & C Block (man-made paddy fields below sea level) → Rani → Chithira → Marthandam → Kainakari → Return to Alleppey.",
+    policies: [
+      "You can enjoy privacy in your room, but common areas (lounge, dining, sundeck) are shared.",
+      "Children below 5 yrs complimentary (sharing with parents). Above 5 yrs charged as extra person.",
+      "Extra food or menu changes must be informed at least 1 day in advance.",
+      "Payments are prepaid — full amount to be paid at check-in.",
+      "Management is not responsible for late arrivals.",
+      "Actual boat may vary depending on how many guests are booked on the same date.",
+    ],
+    facts: [
+      { label: "Duration", value: "8 hours" },
+      { label: "Capacity", value: "Up to 15 guests" },
+      { label: "Meals", value: "Lunch & snacks" },
+      { label: "Rating", value: "5.0 / 5" },
+    ],
   },
   "overnight-stay": {
     name: "Overnight Stay — Shared Houseboat",
     tagline: "Sleep on the water, wake up to paradise",
     duration: "22 hours",
     capacity: "Up to 10 guests",
-    price: "₹5,000/person",
-    type: "shared",
-    checkIn: "1:30 PM – 2:00 PM",
-    checkOut: "8:30 AM",
+    price: "₹5,000",
+    priceUnit: "person",
     images: [
       { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.24%20PM.jpeg" },
       { src: "/houseboat/1-bed/WhatsApp%20Image%202026-06-18%20at%202.58.52%20PM.jpeg" },
@@ -126,7 +139,6 @@ const experiences: Record<string, Experience> = {
       "Onboard kitchen with personal chef",
       "Music system",
     ],
-    route: "Starting from Alleppey → Punnamada Lake → Vembanad Lake → R Block & C Block (man-made paddy fields below sea level) → Rani → Chithira → Marthandam → Kainakari → Dock at Kuppapuram (evening). Next day: Kuppapuram → Pallathuruthy → Return to Alleppey.",
     menu: [
       { meal: "Welcome Drink", items: "Soft drinks (lemon or Tang)" },
       { meal: "Lunch", items: "Rice, Karimeen Fish Fry, Sambar, Curd/Pullissery/Rasam, Cabbage Thoran, Long Beans Fry (Payar Mezhukku), Pappad, Pickle, Salad" },
@@ -134,16 +146,23 @@ const experiences: Record<string, Experience> = {
       { meal: "Dinner", items: "Rice, Chapathi, Chicken Curry, Dal Curry, Vendakka Mezhukku (Okra Fry)" },
       { meal: "Breakfast", items: "Idly, Sambar, Chutney, Tea/Coffee with Sliced Pineapple" },
     ],
+    route: "Starting from Alleppey → Punnamada Lake → Vembanad Lake → R Block & C Block (man-made paddy fields below sea level) → Rani → Chithira → Marthandam → Kainakari → Dock at Kuppapuram (evening). Next day: Kuppapuram → Pallathuruthy → Return to Alleppey.",
     policies: [
       "Check-in: 1:30 PM – 2:00 PM · Check-out: 8:30 AM",
-      "AC timing: 9 PM to 6 AM (rooms only). Full-time AC available at ₹2,000/room extra.",
+      "AC timing: 9 PM to 6 AM (rooms only). Daytime AC available at ₹2,000/room extra.",
       "Children below 5 yrs complimentary (sharing with parents). Above 5 yrs charged as extra person.",
-      "After 5:30 PM the boat anchors near a village area and does not move.",
+      "You can enjoy privacy in your room, but common areas (lounge, dining, sundeck) are shared.",
+      "After 5:30 PM the boat halts near a village area for the night.",
       "Extra food or menu changes must be informed at least 1 day in advance.",
       "Payments are prepaid — full amount to be paid at check-in.",
       "Management is not responsible for late arrivals. Check-out time is strictly followed.",
-      "Private cabin is yours, but common areas (lounge, dining, sundeck) are shared.",
       "Actual boat may vary depending on how many guests are booked on the same date.",
+    ],
+    facts: [
+      { label: "Duration", value: "22 hours" },
+      { label: "Capacity", value: "Up to 10 guests" },
+      { label: "Check-in", value: "1:30 – 2:00 PM" },
+      { label: "Check-out", value: "8:30 AM" },
     ],
   },
   shikara: {
@@ -151,8 +170,8 @@ const experiences: Record<string, Experience> = {
     tagline: "Glide in silence through narrow canals",
     duration: "1–3 hours",
     capacity: "2–6 guests",
-    price: "₹800/hour",
-    type: "vessel",
+    price: "₹800",
+    priceUnit: "hour",
     images: [
       { src: "/shikara/shikara-1.jpg" },
       { src: "/shikara/WhatsApp%20Image%202026-06-18%20at%2012.13.11%20PM.jpeg" },
@@ -186,14 +205,23 @@ const experiences: Record<string, Experience> = {
       "Canopy overhead for shade",
       "Life jackets on board",
     ],
+    menu: [],
+    route: "",
+    policies: [],
+    facts: [
+      { label: "Duration", value: "1–3 hours" },
+      { label: "Capacity", value: "2–6 guests" },
+      { label: "Best for", value: "Couples & friends" },
+      { label: "Rating", value: "5.0 / 5" },
+    ],
   },
   kayak: {
     name: "Kayak Adventure",
     tagline: "Paddle your own path through the backwaters",
     duration: "2–4 hours",
     capacity: "1–2 per kayak",
-    price: "₹500/hour",
-    type: "vessel",
+    price: "₹500",
+    priceUnit: "hour",
     images: [
       { src: "/kayak/kayak-1.jpg" },
       { src: "/kayak&speedboat/WhatsApp%20Image%202026-06-18%20at%2012.18.14%20PM.jpeg" },
@@ -224,14 +252,23 @@ const experiences: Record<string, Experience> = {
       "Paddle & dry bag",
       "Life jacket provided",
     ],
+    menu: [],
+    route: "",
+    policies: [],
+    facts: [
+      { label: "Duration", value: "2–4 hours" },
+      { label: "Capacity", value: "1–2 per kayak" },
+      { label: "Best for", value: "Adventurers" },
+      { label: "Rating", value: "5.0 / 5" },
+    ],
   },
   speedboat: {
     name: "Speedboat Tour",
     tagline: "Cover more water in less time",
     duration: "1–2 hours",
     capacity: "4–8 guests",
-    price: "₹2,000/hour",
-    type: "vessel",
+    price: "₹2,000",
+    priceUnit: "hour",
     images: [
       { src: "/speedboat/speedboat-1.jpg" },
       { src: "/kayak&speedboat/WhatsApp%20Image%202026-06-18%20at%2012.18.14%20PM%20(1).jpeg" },
@@ -261,6 +298,15 @@ const experiences: Record<string, Experience> = {
       "Cushioned seating for 4–8",
       "Life jackets for all passengers",
       "Modern engine & safety equipment",
+    ],
+    menu: [],
+    route: "",
+    policies: [],
+    facts: [
+      { label: "Duration", value: "1–2 hours" },
+      { label: "Capacity", value: "4–8 guests" },
+      { label: "Best for", value: "Groups" },
+      { label: "Rating", value: "5.0 / 5" },
     ],
   },
 };
@@ -292,31 +338,13 @@ export default async function ExperiencePage({
   const exp = experiences[slug];
   if (!exp) notFound();
 
-  const bookingMessage = `Hi! I'd like to book the ${exp.name} (${exp.price}). Please share availability and details.`;
-  const [priceMain, priceUnit] = exp.price.split("/");
+  const bookingMessage = `Hi! I'd like to book the ${exp.name} (${exp.price}/${exp.priceUnit}). Please share availability and details.`;
   const journey = exp.route
     ? exp.route.split("→").map((s) => s.trim()).filter(Boolean)
     : [];
-
   const otherExperiences = Object.entries(experiences)
     .filter(([s]) => s !== slug)
-    .slice(0, 4);
-
-  const ICON_PATHS = {
-    clock: "M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z",
-    users: "M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0",
-    calendar: "M6.75 3v2.25M17.25 3v2.25M3 18.75V7.5a2.25 2.25 0 0 1 2.25-2.25h13.5A2.25 2.25 0 0 1 21 7.5v11.25m-18 0A2.25 2.25 0 0 0 5.25 21h13.5A2.25 2.25 0 0 0 21 18.75m-18 0v-7.5A2.25 2.25 0 0 1 5.25 9h13.5A2.25 2.25 0 0 1 21 11.25v7.5",
-    star: "M11.48 3.499a.562.562 0 0 1 1.04 0l2.125 5.111a.563.563 0 0 0 .475.345l5.518.442c.499.04.701.663.321.988l-4.204 3.602a.563.563 0 0 0-.182.557l1.285 5.385a.562.562 0 0 1-.84.61l-4.725-2.885a.562.562 0 0 0-.586 0L6.982 20.54a.562.562 0 0 1-.84-.61l1.285-5.386a.562.562 0 0 0-.182-.557l-4.204-3.602a.562.562 0 0 1 .321-.988l5.518-.442a.563.563 0 0 0 .475-.345L11.48 3.5Z",
-  };
-
-  const facts = [
-    { label: "Duration", value: exp.duration, icon: ICON_PATHS.clock },
-    { label: "Group size", value: exp.capacity, icon: ICON_PATHS.users },
-    exp.checkIn
-      ? { label: "Check-in", value: exp.checkIn, icon: ICON_PATHS.calendar }
-      : { label: "Best for", value: exp.type === "shared" ? "Groups & solo" : "Couples & friends", icon: ICON_PATHS.users },
-    { label: "Rating", value: "5.0 / 5", icon: ICON_PATHS.star },
-  ];
+    .slice(0, 6);
 
   return (
     <main className="pb-24 lg:pb-0">
@@ -357,16 +385,11 @@ export default async function ExperiencePage({
 
       {/* Quick facts */}
       <div className="mx-auto mt-8 max-w-6xl px-5 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-gray-100 shadow-lg shadow-gray-200/60 ring-1 ring-gray-100 sm:grid-cols-4">
-          {facts.map((f) => (
-            <div key={f.label} className="flex items-center gap-3 bg-white p-4 sm:p-5">
-              <svg className="h-5 w-5 shrink-0 text-ocean-600" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" d={f.icon} />
-              </svg>
-              <div className="min-w-0">
-                <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">{f.label}</p>
-                <p className="truncate text-sm font-semibold text-gray-900">{f.value}</p>
-              </div>
+        <div className="grid grid-cols-2 gap-px overflow-hidden rounded-2xl bg-gray-100 ring-1 ring-gray-100 sm:grid-cols-4">
+          {exp.facts.map((f) => (
+            <div key={f.label} className="bg-white p-4 text-center sm:p-5">
+              <p className="text-[11px] font-medium uppercase tracking-wide text-gray-400">{f.label}</p>
+              <p className="mt-1 text-sm font-semibold text-gray-900 sm:text-base">{f.value}</p>
             </div>
           ))}
         </div>
@@ -381,7 +404,7 @@ export default async function ExperiencePage({
               {/* About */}
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ocean-600">Overview</p>
-                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">About this experience</h2>
+                <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">About this houseboat</h2>
                 <p className="mt-4 text-base leading-relaxed text-gray-700 sm:text-lg">{exp.description}</p>
                 <p className="mt-4 text-[15px] leading-relaxed text-gray-500">{exp.longDescription}</p>
               </div>
@@ -435,7 +458,7 @@ export default async function ExperiencePage({
               )}
 
               {/* Menu */}
-              {exp.menu && (
+              {exp.menu.length > 0 && (
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ocean-600">Dining</p>
                   <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">What&apos;s on the menu</h2>
@@ -451,7 +474,7 @@ export default async function ExperiencePage({
               )}
 
               {/* Good to know */}
-              {exp.policies && (
+              {exp.policies.length > 0 && (
                 <div>
                   <p className="text-xs font-semibold uppercase tracking-[0.15em] text-ocean-600">Good to know</p>
                   <h2 className="mt-1.5 text-2xl font-bold tracking-tight text-gray-900">Important information</h2>
@@ -478,10 +501,8 @@ export default async function ExperiencePage({
                   <div className="flex items-end justify-between gap-3">
                     <div>
                       <p className="text-3xl font-bold tracking-tight text-gray-900">
-                        {priceMain}
-                        {priceUnit && (
-                          <span className="text-base font-medium text-gray-400">/{priceUnit}</span>
-                        )}
+                        {exp.price}
+                        <span className="text-base font-medium text-gray-400">/{exp.priceUnit}</span>
                       </p>
                       <p className="mt-1 text-sm text-gray-400">
                         {exp.duration} · {exp.capacity}
@@ -538,7 +559,7 @@ export default async function ExperiencePage({
         <div className="mx-auto max-w-6xl px-5 sm:px-6 lg:px-8">
           <h2 className="text-xl font-bold tracking-tight text-gray-900 sm:text-2xl">Explore other experiences</h2>
           <p className="mt-1 text-sm text-gray-400">More ways to experience the backwaters.</p>
-          <div className="mt-6 grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4">
+          <div className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-4 lg:grid-cols-6">
             {otherExperiences.map(([s, e]) => (
               <Link key={s} href={`/experiences/${s}`} className="group">
                 <div className="relative aspect-[4/3] overflow-hidden rounded-xl">
@@ -547,14 +568,14 @@ export default async function ExperiencePage({
                     alt={e.name}
                     fill
                     className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    sizes="(max-width: 640px) 50vw, 25vw"
+                    sizes="(max-width: 640px) 50vw, 16vw"
                     style={e.images[0].objectPosition ? { objectPosition: e.images[0].objectPosition } : undefined}
                   />
                 </div>
                 <div className="mt-2">
                   <h3 className="text-xs font-semibold text-gray-900 sm:text-sm">{e.name}</h3>
                   <p className="text-[11px] text-gray-400">{e.duration} · {e.capacity}</p>
-                  <p className="mt-0.5 text-xs font-bold text-gray-900 sm:text-sm">From {e.price}</p>
+                  <p className="mt-0.5 text-xs font-bold text-gray-900 sm:text-sm">From {e.price}/{e.priceUnit}</p>
                 </div>
               </Link>
             ))}
@@ -568,8 +589,8 @@ export default async function ExperiencePage({
           <div className="min-w-0 flex-1">
             <p className="truncate text-[11px] text-gray-400">{exp.duration} · {exp.capacity}</p>
             <p className="text-base font-bold leading-tight text-gray-900">
-              {priceMain}
-              {priceUnit && <span className="text-xs font-medium text-gray-400">/{priceUnit}</span>}
+              {exp.price}
+              <span className="text-xs font-medium text-gray-400">/{exp.priceUnit}</span>
             </p>
           </div>
           <a

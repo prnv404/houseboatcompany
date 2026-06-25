@@ -5,6 +5,7 @@ import type { Metadata } from "next";
 import HouseboatGallery from "../../components/houseboat-gallery";
 import { CheckIcon, PhoneIcon, StarIcon, WhatsAppIcon } from "../../components/icons";
 import { PHONE_NUMBER, whatsappLink } from "../../lib/contact";
+import SiteFooter from "../../components/sections/site-footer";
 
 interface MenuItem {
   meal: string;
@@ -582,6 +583,8 @@ export default async function ExperiencePage({
           </div>
         </div>
       </section>
+
+      <SiteFooter />
 
       {/* Sticky mobile booking bar */}
       <div className="fixed inset-x-0 bottom-0 z-40 border-t border-gray-100 bg-white/95 px-4 py-3 backdrop-blur-lg lg:hidden">

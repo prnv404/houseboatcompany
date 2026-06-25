@@ -1,7 +1,13 @@
+import Image from "next/image";
 import { GoogleIcon, StarRating } from "../icons";
-import { reviews } from "../../data/home";
+import { getGoogleReviews } from "../../lib/google-business";
 
-export default function Reviews() {
+export default async function Reviews() {
+  const items = await getGoogleReviews();
+
+  // Nothing to show until live Google reviews are available — hide the section.
+  if (items.length === 0) return null;
+
   return (
     <section id="stories" className="bg-gray-50 py-16 sm:py-24">
       <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
@@ -27,24 +33,36 @@ export default function Reviews() {
 
         {/* Review cards */}
         <div className="mt-8 flex gap-3 overflow-x-auto pb-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:overflow-visible sm:pb-0 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-          {reviews.map((review) => (
+          {items.map((review) => (
             <div
-              key={review.name}
+              key={review.id}
               className="flex w-64 shrink-0 flex-col rounded-xl bg-white p-4 shadow-sm ring-1 ring-gray-100 sm:w-auto sm:shrink sm:rounded-2xl sm:p-6"
             >
               <div className="flex items-center gap-2.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ocean-100 text-xs font-bold text-ocean-700 sm:h-10 sm:w-10 sm:text-sm">
-                  {review.name[0]}
-                </div>
+                {review.photoUrl ? (
+                  <Image
+                    src={review.photoUrl}
+                    alt={review.author}
+                    width={40}
+                    height={40}
+                    className="h-8 w-8 rounded-full object-cover sm:h-10 sm:w-10"
+                  />
+                ) : (
+                  <div className="flex h-8 w-8 items-center justify-center rounded-full bg-ocean-100 text-xs font-bold text-ocean-700 sm:h-10 sm:w-10 sm:text-sm">
+                    {review.author[0]}
+                  </div>
+                )}
                 <div>
-                  <p className="text-xs font-semibold text-gray-900 sm:text-sm">{review.name}</p>
-                  <p className="text-[11px] text-gray-400 sm:text-xs">{review.location}</p>
+                  <p className="text-xs font-semibold text-gray-900 sm:text-sm">{review.author}</p>
+                  <p className="text-[11px] text-gray-400 sm:text-xs">Posted on Google</p>
                 </div>
               </div>
 
               <div className="mt-2 flex items-center gap-2">
                 <StarRating className="h-3 w-3 sm:h-3.5 sm:w-3.5" />
-                <span className="text-[11px] text-gray-300 sm:text-xs">{review.time}</span>
+                {review.time && (
+                  <span className="text-[11px] text-gray-300 sm:text-xs">{review.time}</span>
+                )}
               </div>
 
               <p className="mt-2 flex-1 text-xs leading-relaxed text-gray-500 sm:mt-3 sm:text-sm">

@@ -64,9 +64,6 @@ export default async function HouseboatPage({
       <header className="mx-auto max-w-6xl px-5 pt-4 sm:px-6 lg:px-8">
         <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <span className="mb-2.5 inline-block rounded-full bg-ocean-600 px-3 py-1 text-[11px] font-semibold uppercase tracking-wider text-white">
-              Private Houseboat
-            </span>
             <h1 className="text-3xl font-bold leading-tight tracking-tight text-gray-900 sm:text-4xl">
               {boat.name}
             </h1>
@@ -162,8 +159,8 @@ export default async function HouseboatPage({
               </div>
             </div>
 
-            {/* Booking sidebar */}
-            <div className="lg:col-span-1">
+            {/* Booking sidebar — hidden on mobile (sticky bottom bar covers it) */}
+            <div className="hidden lg:col-span-1 lg:block">
               <div className="sticky top-24 overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-xl shadow-gray-200/60">
                 <div className="border-b border-gray-100 p-6">
                   <div className="flex items-end justify-between gap-3">

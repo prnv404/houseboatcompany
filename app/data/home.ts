@@ -42,13 +42,6 @@ export interface Step {
   description: string;
 }
 
-export interface Review {
-  name: string;
-  location: string;
-  time: string;
-  text: string;
-}
-
 export const vessels: Vessel[] = [
   {
     name: "Shikara",
@@ -337,26 +330,5 @@ export const privateBoats: PrivateBoat[] = [
       { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.27%20PM.jpeg" },
       { src: "/houseboat/14-bed/WhatsApp%20Image%202026-06-18%20at%203.01.29%20PM.jpeg" },
     ],
-  },
-];
-
-export const reviews: Review[] = [
-  {
-    name: "Priya & Arjun",
-    location: "Mumbai",
-    time: "2 weeks ago",
-    text: "We joined the shared overnight cruise as solo travelers and left as friends. The food, the sunset, the silence at dawn — nothing compares. Highlight of our Kerala trip!",
-  },
-  {
-    name: "Rahul Menon",
-    location: "Bangalore",
-    time: "1 month ago",
-    text: "Absolutely worth it at ₹5,000 for two. The rooms are luxurious, crew was super friendly, and the Kerala meals were authentic. Will definitely come back.",
-  },
-  {
-    name: "Sarah & James",
-    location: "London, UK",
-    time: "3 weeks ago",
-    text: "Best value houseboat experience in Alleppey. We compared many options and this was the clear winner. Clean rooms, great food, stunning backwater views.",
   },
 ];

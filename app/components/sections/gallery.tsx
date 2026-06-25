@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { queenGallery } from "../../data/home";
+import { getGooglePhotos } from "../../lib/google-business";
 
-export default function Gallery() {
+export default async function Gallery() {
+  const live = await getGooglePhotos();
+  const photos = live.length > 0 ? live : queenGallery;
+
   return (
     <section className="py-10 sm:py-14">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
@@ -15,7 +19,7 @@ export default function Gallery() {
         </div>
 
         <div className="mt-8 grid grid-cols-3 gap-1.5 sm:grid-cols-4 sm:gap-2 lg:grid-cols-6">
-          {queenGallery.map((photo) => (
+          {photos.map((photo) => (
             <div
               key={photo.src}
               className="group relative aspect-square overflow-hidden rounded-lg"

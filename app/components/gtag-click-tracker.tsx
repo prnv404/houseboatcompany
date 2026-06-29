@@ -17,7 +17,7 @@ export default function GtagClickTracker() {
 
       if (href.startsWith("https://wa.me/") || href.startsWith("tel:")) {
         window.gtag?.("event", "conversion", {
-          send_to: "AW-18106309279",
+          send_to: "AW-18106309279/GeRvCLurvcccEJ-14blD",
         });
       }
     };

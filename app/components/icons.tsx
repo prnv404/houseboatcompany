@@ -18,6 +18,14 @@ export function WhatsAppIcon({ className }: IconProps) {
   );
 }
 
+export function PlayIcon({ className }: IconProps) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+      <path d="M8 5.14v13.72c0 .83.9 1.34 1.61.9l10.9-6.86a1.06 1.06 0 0 0 0-1.8L9.61 4.24A1.06 1.06 0 0 0 8 5.14Z" />
+    </svg>
+  );
+}
+
 export function CheckIcon({ className }: IconProps) {
   return (
     <svg className={className} fill="none" viewBox="0 0 24 24" strokeWidth={2} stroke="currentColor">

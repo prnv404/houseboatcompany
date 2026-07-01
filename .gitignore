@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# next-video (raw source videos are uploaded to Mux; only the *.json metadata is committed)
+videos/*
+!videos/*.json
+!videos/*.js
+!videos/*.ts
+!videos/*.md
+public/_next-video

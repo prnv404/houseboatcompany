@@ -40,7 +40,7 @@ export default function MobileBookingBar() {
           </PopoverContent>
         </Popover>
         <a
-          href={`https://wa.me/916282477940?text=${encodeURIComponent(whatsappText)}`}
+          href={`https://wa.me/919995102845?text=${encodeURIComponent(whatsappText)}`}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-lg bg-ocean-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ocean-700"

@@ -1,9 +1,19 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist } from "next/font/google";
 import Script from "next/script";
 import "./globals.css";
 import Header from "./components/header";
 import GtagClickTracker from "./components/gtag-click-tracker";
+import JsonLd from "./components/json-ld";
+import {
+  BRAND,
+  SITE_DESCRIPTION,
+  SITE_NAME,
+  SITE_URL,
+  LOCALE,
+  organizationJsonLd,
+  websiteJsonLd,
+} from "./lib/seo";
 
 const geist = Geist({
   variable: "--font-geist-sans",
@@ -11,9 +21,61 @@ const geist = Geist({
 });
 
 export const metadata: Metadata = {
-  title: "HouseBoatCompany — Luxury Houseboat Experiences",
-  description:
-    "Discover the backwaters aboard handcrafted luxury houseboats. Cruise through palm-lined canals, savor authentic cuisine, and wake up to golden sunrises on the water.",
+  metadataBase: new URL(SITE_URL),
+  title: {
+    default:
+      "Alleppey Houseboat Booking — Luxury Kerala Backwater Cruises | HouseBoat Company",
+    template: `%s | ${BRAND}`,
+  },
+  description: SITE_DESCRIPTION,
+  applicationName: SITE_NAME,
+  keywords: [
+    "Alleppey houseboat",
+    "Alappuzha houseboat booking",
+    "Kerala backwater cruise",
+    "luxury houseboat Kerala",
+    "private houseboat Alleppey",
+    "overnight houseboat stay",
+    "Vembanad Lake cruise",
+    "shikara ride Alleppey",
+    "shared houseboat Kerala",
+  ],
+  authors: [{ name: SITE_NAME }],
+  creator: SITE_NAME,
+  publisher: SITE_NAME,
+  alternates: { canonical: "/" },
+  category: "travel",
+  openGraph: {
+    type: "website",
+    siteName: SITE_NAME,
+    title:
+      "Alleppey Houseboat Booking — Luxury Kerala Backwater Cruises",
+    description: SITE_DESCRIPTION,
+    url: SITE_URL,
+    locale: LOCALE,
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Alleppey Houseboat Booking — Luxury Kerala Backwater Cruises",
+    description: SITE_DESCRIPTION,
+  },
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  formatDetection: { telephone: true, address: true, email: true },
+};
+
+export const viewport: Viewport = {
+  themeColor: "#ffffff",
+  colorScheme: "light",
 };
 
 export default function RootLayout({
@@ -44,6 +106,7 @@ export default function RootLayout({
         />
       </head>
       <body className="min-h-full flex flex-col font-sans">
+        <JsonLd data={[organizationJsonLd(), websiteJsonLd()]} />
         <Header />
         <GtagClickTracker />
         {children}

@@ -3,10 +3,17 @@ import Image from "next/image";
 import { notFound } from "next/navigation";
 import type { Metadata } from "next";
 import HouseboatGallery from "../../components/houseboat-gallery";
+import JsonLd from "../../components/json-ld";
 import { CheckIcon, PhoneIcon, StarIcon, WhatsAppIcon } from "../../components/icons";
 import { PHONE_NUMBER, whatsappLink } from "../../lib/contact";
 import SiteFooter from "../../components/sections/site-footer";
 import { privateBoats } from "../../data/home";
+import {
+  absoluteUrl,
+  breadcrumbJsonLd,
+  parseInr,
+  productJsonLd,
+} from "../../lib/seo";
 import {
   getHouseboatDetail,
   houseboatSlug,
@@ -29,10 +36,27 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const boat = getHouseboatDetail(slug);
-  if (!boat) return { title: "Not Found" };
+  if (!boat) return { title: "Not Found", robots: { index: false, follow: false } };
+  const path = `/houseboats/${slug}`;
+  const images = boat.images.map((img) => absoluteUrl(img.src));
+  const title = `${boat.name} in Alleppey — ${boat.price}/night`;
   return {
-    title: `${boat.name} — Alleppey HouseBoat Company`,
+    title,
     description: boat.description,
+    alternates: { canonical: path },
+    openGraph: {
+      type: "website",
+      title,
+      description: boat.description,
+      url: path,
+      images: images.slice(0, 4).map((url) => ({ url, alt: boat.name })),
+    },
+    twitter: {
+      card: "summary_large_image",
+      title,
+      description: boat.description,
+      images: images.slice(0, 1),
+    },
   };
 }
 
@@ -48,8 +72,31 @@ export default async function HouseboatPage({
   const bookingMessage = `Hi! I'd like to book the ${boat.name} (${boat.price}/night). Please share availability and details.`;
   const otherBoats = privateBoats.filter((b) => b.beds !== boat.beds).slice(0, 6);
 
+  const path = `/houseboats/${slug}`;
+  const price = parseInr(boat.price);
+  const structuredData: object[] = [
+    breadcrumbJsonLd([
+      { name: "Home", path: "/" },
+      { name: "Private Houseboats", path: "/#private" },
+      { name: boat.name, path },
+    ]),
+  ];
+  if (price !== undefined) {
+    structuredData.push(
+      productJsonLd({
+        name: `${boat.name} — Alleppey`,
+        description: boat.description,
+        url: path,
+        image: boat.images.map((img) => img.src),
+        price,
+        unit: "night",
+      }),
+    );
+  }
+
   return (
     <main className="pb-24 lg:pb-0">
+      <JsonLd data={structuredData} />
       {/* Back nav */}
       <div className="mx-auto max-w-6xl px-5 pt-5 sm:px-6 sm:pt-6 lg:px-8">
         <Link

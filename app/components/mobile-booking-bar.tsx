@@ -8,6 +8,7 @@ import {
   PopoverContent,
   PopoverTrigger,
 } from "@/components/ui/popover";
+import { whatsappLink } from "../lib/contact";
 
 export default function MobileBookingBar() {
   const [date, setDate] = useState<Date>();
@@ -40,7 +41,7 @@ export default function MobileBookingBar() {
           </PopoverContent>
         </Popover>
         <a
-          href={`https://wa.me/919995102845?text=${encodeURIComponent(whatsappText)}`}
+          href={whatsappLink(whatsappText)}
           target="_blank"
           rel="noopener noreferrer"
           className="rounded-lg bg-ocean-600 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-ocean-700"

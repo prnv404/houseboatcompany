@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import { PHONE_NUMBER, whatsappLink } from "../lib/contact";
 
 export default function FloatingButtons() {
   const [visible, setVisible] = useState(false);
@@ -20,7 +21,7 @@ export default function FloatingButtons() {
     >
       {/* WhatsApp */}
       <a
-        href="https://wa.me/919995102845"
+        href={whatsappLink("Hi! I'd like to know more about your houseboat cruises.")}
         target="_blank"
         rel="noopener noreferrer"
         aria-label="Chat on WhatsApp"
@@ -33,7 +34,7 @@ export default function FloatingButtons() {
 
       {/* Call */}
       <a
-        href="tel:+919995102845"
+        href={`tel:${PHONE_NUMBER}`}
         aria-label="Call us"
         className="flex h-14 w-14 items-center justify-center rounded-full bg-ocean-600 text-white shadow-lg transition-transform hover:scale-110"
       >

@@ -2,6 +2,7 @@ import { Metadata } from "next";
 import Image from "next/image";
 import { notFound } from "next/navigation";
 import { blogPosts, getBlogPostBySlug } from "../../data/blog";
+import SiteFooter from "../../components/sections/site-footer";
 
 export async function generateStaticParams() {
   return blogPosts.map((post) => ({
@@ -49,7 +50,8 @@ export default async function BlogPostPage({
   }
 
   return (
-    <article className="bg-white px-6 py-32 lg:px-8">
+    <>
+      <article className="bg-white px-6 py-32 lg:px-8">
       <div className="mx-auto max-w-3xl text-base leading-7 text-gray-700">
         <p className="text-base font-semibold leading-7 text-ocean-600">
           {new Date(post.date).toLocaleDateString("en-US", {
@@ -85,6 +87,8 @@ export default async function BlogPostPage({
           {post.content}
         </div>
       </div>
-    </article>
+      </article>
+      <SiteFooter />
+    </>
   );
 }

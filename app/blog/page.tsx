@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { Metadata } from "next";
 import { blogPosts } from "../data/blog";
+import SiteFooter from "../components/sections/site-footer";
 
 export const metadata: Metadata = {
   title: "Blog - Alleppey HouseBoat Company",
@@ -10,7 +11,8 @@ export const metadata: Metadata = {
 
 export default function BlogIndex() {
   return (
-    <div className="bg-white py-24 sm:py-32">
+    <>
+      <main className="bg-white py-24 sm:py-32">
       <div className="mx-auto max-w-7xl px-6 lg:px-8">
         <div className="mx-auto max-w-2xl text-center">
           <h1 className="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">From the Blog</h1>
@@ -74,6 +76,8 @@ export default function BlogIndex() {
           ))}
         </div>
       </div>
-    </div>
+      </main>
+      <SiteFooter />
+    </>
   );
 }
